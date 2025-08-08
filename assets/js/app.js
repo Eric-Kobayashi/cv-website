@@ -2,14 +2,12 @@ function app() {
   return {
     navItems: [
       { key: 'home', label: 'Home' },
-      { key: 'about', label: 'About' },
       { key: 'publications', label: 'Publications' },
       { key: 'projects', label: 'Projects' },
       { key: 'awards', label: 'Awards' },
       { key: 'teaching', label: 'Teaching' },
       { key: 'talks', label: 'Talks' },
       { key: 'service', label: 'Service' },
-      { key: 'cv', label: 'CV' },
       { key: 'contact', label: 'Contact' },
     ],
     view: 'home',
