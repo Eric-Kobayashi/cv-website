@@ -28,6 +28,9 @@ body {
   line-height: 1.6;
 }
 
+/* Prevent header/layout shift when vertical scrollbar appears between pages */
+html { scrollbar-gutter: stable both-edges; }
+
 .container {
   width: min(1100px, 92vw);
   margin: 0 auto;
