@@ -93,7 +93,7 @@ async function populateSite() {
 
     const talksList = document.getElementById('talks-list');
 
-    const serviceList = document.getElementById('service-list');
+    const serviceList = null;
 
     function renderTimeline(listEl, items) {
       if (!listEl || !Array.isArray(items)) return;
@@ -141,7 +141,7 @@ async function populateSite() {
     renderTimeline(awardsList, data.awards);
     renderTimeline(teachingList, data.teaching);
     renderTimeline(talksList, data.talks);
-    renderTimeline(serviceList, data.service);
+    // service page removed
 
     const emailEl = document.getElementById('contact-email');
     if (emailEl && data.email) {
