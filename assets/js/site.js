@@ -83,15 +83,35 @@ async function populateSite() {
 
     function renderTimeline(listEl, items) {
       if (!listEl || !Array.isArray(items)) return;
-      listEl.innerHTML = items.map((item) => {
+      const groups = new Map();
+      for (const item of items) {
         if (typeof item === 'string') {
-          return `<li><div class="time-list"></div><div class="item-body">${item}</div></li>`;
+          const arr = groups.get('') || [];
+          arr.push(item);
+          groups.set('', arr);
+          continue;
         }
         const times = Array.isArray(item.times) ? item.times : (item.time ? [item.time] : []);
-        const timeHtml = times.map((t) => `<span class=\"time\">${t}</span>`).join('');
-        const body = item.text || '';
-        return `<li><div class="time-list">${timeHtml}</div><div class="item-body">${body}</div></li>`;
-      }).join('');
+        const text = item.text || '';
+        if (!times.length) {
+          const arr = groups.get('') || [];
+          arr.push(text);
+          groups.set('', arr);
+        } else {
+          for (const t of times) {
+            const arr = groups.get(t) || [];
+            arr.push(text);
+            groups.set(t, arr);
+          }
+        }
+      }
+      const html = [];
+      for (const [label, texts] of groups.entries()) {
+        const timeHtml = label ? `<span class="time">${label}</span>` : '';
+        const listHtml = `<ul class="item-list">${texts.map((t) => `<li>${t}</li>`).join('')}</ul>`;
+        html.push(`<li><div class="time-list">${timeHtml}</div><div class="item-body">${listHtml}</div></li>`);
+      }
+      listEl.innerHTML = html.join('');
     }
 
     renderTimeline(projList, data.projects);
