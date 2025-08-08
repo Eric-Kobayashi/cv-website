@@ -20,15 +20,15 @@
     "Geoengineering (Stratospheric Aerosol Injection)"
   ],
   "publications": [
-    "Chim, M. M., Aubry, T. J., Smith, C., & Schmidt, A. (2025). Neglecting future sporadic volcanic eruptions underestimates climate uncertainty. Communications Earth & Environment, 6, 236 (2025).",
-    "Chim, M. M., Aubry, T. J., Abraham, N. L., Marshall, L., Mulcahy, J., Walton, J., & Schmidt, A. (2023). Climate projections very likely underestimate future volcanic forcing and its climatic effects. Geophysical Research Letters, 50(12), e2023GL103743.",
+    { "title": "Chim, M. M., Aubry, T. J., Smith, C., & Schmidt, A. (2025). Neglecting future sporadic volcanic eruptions underestimates climate uncertainty. Communications Earth & Environment, 6, 236 (2025).", "url": "https://www.nature.com/articles/s43247-025-02208-1" },
+    { "title": "Chim, M. M., Aubry, T. J., Abraham, N. L., Marshall, L., Mulcahy, J., Walton, J., & Schmidt, A. (2023). Climate projections very likely underestimate future volcanic forcing and its climatic effects. Geophysical Research Letters, 50(12), e2023GL103743.", "url": "https://doi.org/10.1029/2023GL103743" },
     "Chim, M. M., Maters, E. C., Morin, J., Kavanagh, J. L., Donovan, A., Aubry, T. J., & Schmidt, A. (2023). Disproportionate impacts of the COVID‑19 pandemic on early career and disabled researchers in volcanology. Frontiers in Earth Science, 11.",
     "Sun, H. Z., Zhao, J., Liu, X., Qiu, M., Shen, H., Guillas, S., Giorio, C., Staniaszek, Z., Yu, P., Wan, M. W. L., Chim, M. M., … & Archibald, A. T. (2023). Antagonism between ambient ozone increase and urbanization‑oriented population migration on Chinese cardiopulmonary mortality. The Innovation, 4(6).",
     "UNEP (2019). Waste‑to‑Energy: Considerations for Informed Decision‑Making. Lead author: Chim, M. M. ISBN 978‑92‑807‑3754‑7.",
     "Chim, M. M., Lim, C. Y., Kroll, J. H., & Chan, M. N. (2018). Evolution in the Reactivity of Citric Acid toward Heterogeneous Oxidation by Gas‑Phase OH Radicals. ACS Earth and Space Chemistry, 2(12), 1323–1329.",
     "Kwong, K. C., Chim, M. M., Hoffmann, E. H., Tilgner, A., Herrmann, H., Davies, J. F., Wilson, K. R., & Chan, M. N. (2018). Chemical Transformation of Methanesulfonic Acid and Sodium Methanesulfonate through Heterogeneous OH Oxidation. ACS Earth and Space Chemistry, 2(9), 895–903.",
     "Kwong, K. C., Chim, M. M., Davies, J. F., Wilson, K. R., & Chan, M. N. (2018). Importance of Sulfate Radical Anion Formation and Chemistry in Heterogeneous OH Oxidation of Sodium Methyl Sulfate. Atmospheric Chemistry and Physics, 18(4), 2809–2820.",
-    "Chim, M. M., Cheng, C. T., Davies, J. F., Berkemeier, T., Shiraiwa, M., Zuend, A., & Chan, M. N. (2017). Compositional Evolution of Particle‑Phase Reaction Products and Water in the Heterogeneous OH Oxidation of Aqueous Organic Droplets. Atmospheric Chemistry and Physics, 17, 14415–14431.",
+    { "title": "Chim, M. M., Cheng, C. T., Davies, J. F., Berkemeier, T., Shiraiwa, M., Zuend, A., & Chan, M. N. (2017). Compositional Evolution of Particle‑Phase Reaction Products and Water in the Heterogeneous OH Oxidation of Aqueous Organic Droplets. Atmospheric Chemistry and Physics, 17, 14415–14431.", "url": "https://acp.copernicus.org/articles/17/14415/2017/" },
     "Chim, M. M., Chow, C. Y., Davies, J. F., & Chan, M. N. (2017). Effects of Relative Humidity and Particle‑Phase Water on the Heterogeneous OH Oxidation of 2‑Methylglutaric Acid Aqueous Droplets. The Journal of Physical Chemistry A, 121(8), 1666–1674.",
     "Chim, M. M. et al. (in preparation). Future volcanic eruptions may delay the recovery of lower stratospheric ozone over Antarctica and Southern Hemisphere mid‑latitudes."
   ],
