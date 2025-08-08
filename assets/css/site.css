@@ -117,7 +117,7 @@ body {
   content: "";
   position: absolute;
   left: 6px;
-  top: 0.18em; /* fine-tune alignment with time badge baseline */
+  top: 0.44em; /* fine-tune alignment with time badge baseline */
   width: 16px;
   height: 16px;
   background: var(--bg);

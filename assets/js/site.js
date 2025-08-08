@@ -67,7 +67,15 @@ async function populateSite() {
     const pubList = document.getElementById('pub-list');
     if (pubList && Array.isArray(data.publications)) {
       pubList.innerHTML = data.publications
-        .map((p) => `<li>${p}</li>`)
+        .map((p) => {
+          if (typeof p === 'string') return `<li>${p}</li>`;
+          if (p && typeof p === 'object' && p.title) {
+            const title = p.title;
+            const url = p.url;
+            return url ? `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></li>` : `<li>${title}</li>`;
+          }
+          return '';
+        })
         .join('');
     }
 
