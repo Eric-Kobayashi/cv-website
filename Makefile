@@ -7,3 +7,6 @@ extract:
 bake:
 	./.venv/bin/python scripts/build_site_data_js.py
 
+feature-images:
+	./.venv/bin/python scripts/fetch_feature_images.py && make bake
+
