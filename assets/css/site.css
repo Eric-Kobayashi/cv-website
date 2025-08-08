@@ -73,8 +73,8 @@ html { scrollbar-gutter: stable both-edges; }
 }
 
 .home-summary { padding: 12px 0 56px; }
-.summary-inner { display: grid; gap: 14px; justify-items: start; }
-.summary-text { max-width: 70ch; color: var(--muted); font-size: 18px; }
+.summary-inner { display: grid; gap: 54px; justify-items: start; }
+.summary-text { max-width: 63ch; color: var(--muted); font-size: 18px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); background: color-mix(in srgb, var(--bg) 88%, transparent); }
 
