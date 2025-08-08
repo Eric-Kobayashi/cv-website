@@ -175,6 +175,33 @@ async function populateSite() {
     if (heroImg && data.photo) {
       heroImg.src = data.photo;
     }
+
+    // Featured cards on home
+    const featuredWrap = document.getElementById('featured-cards');
+    if (featuredWrap && Array.isArray(data.featured)) {
+      featuredWrap.innerHTML = data.featured
+        .map((item) => {
+          const title = item.title || '';
+          const url = item.url || '#';
+          const source = item.source || '';
+          const image = item.image || '';
+          const kicker = item.kicker || 'Link';
+          const imgHtml = image
+            ? `<div class="card-media"><img src="${image}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"/></div>`
+            : `<div class="card-media" aria-hidden="true"></div>`;
+          return `
+            <article class="card">
+              ${imgHtml}
+              <div class="card-body">
+                <div class="card-kicker">${kicker}</div>
+                <h3 class="card-title"><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+                <div class="card-source">${source}</div>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
   } catch {}
 }
 

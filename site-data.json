@@ -18,6 +18,29 @@
     "Climate Change", 
     "Climate Uncertainty"    
   ],
+  "featured": [
+    {
+      "kicker": "Link",
+      "title": "Guest post: Investigating how volcanic eruptions can affect climate projections",
+      "source": "Carbon Brief",
+      "url": "https://www.carbonbrief.org/guest-post-investigating-how-volcanic-eruptions-can-affect-climate-projections/",
+      "image": ""
+    },
+    {
+      "kicker": "Link",
+      "title": "Volcanoes’ Future Climate Effects May Exceed Standard Estimates",
+      "source": "Eos",
+      "url": "https://eos.org/research-spotlights/volcanoes-future-climate-effects-may-exceed-standard-estimates",
+      "image": ""
+    },
+    {
+      "kicker": "Link",
+      "title": "Press release - Effect of volcanic eruptions significantly underestimated in climate projections",
+      "source": "University of Cambridge",
+      "url": "https://www.cam.ac.uk/research/news/effect-of-volcanic-eruptions-significantly-underestimated-in-climate-projections",
+      "image": ""
+    }
+  ],
   "publications": [
     {
       "title": "Chim, M. M. et al. (in preparation). Future volcanic eruptions may delay the recovery of lower stratospheric ozone over Antarctica and Southern Hemisphere mid‑latitudes.",
