@@ -87,15 +87,32 @@ async function populateSite() {
     }
 
     // Enhance all timeline lists with time highlighting
-    const timelineLists = [awardsList, projList, document.getElementById('teaching-list'), document.getElementById('talks-list'), document.getElementById('service-list')].filter(Boolean);
-    const timeRegex = /(\b\d{4}(?:–\d{4}|–Present|–\s*Present)?\b)/; // capture a year or a year range
+    const timeRegex = /\b\d{4}(?:\s*(?:–|—|-|to)\s*(?:\d{4}|Present))?\b/g; // year or year-range
+
+    // Talks: move all time strings to the front, then remaining text
+    if (talksList) {
+      for (const li of Array.from(talksList.querySelectorAll('li'))) {
+        const text = li.textContent || '';
+        const times = Array.from(new Set((text.match(timeRegex) || []).map((t) => t)));
+        const body = text.replace(timeRegex, '').replace(/\s{2,}/g, ' ').replace(/^[,;:\s-]+/, '').trim();
+        li.innerHTML = '';
+        for (const t of times) {
+          const span = document.createElement('span');
+          span.className = 'time';
+          span.textContent = t;
+          li.appendChild(span);
+          li.appendChild(document.createTextNode(' '));
+        }
+        li.appendChild(document.createTextNode(body));
+      }
+    }
+
+    // Other timelines: wrap all time occurrences inline
+    const timelineLists = [awardsList, projList, document.getElementById('teaching-list'), document.getElementById('service-list')].filter(Boolean);
     for (const list of timelineLists) {
       for (const li of Array.from(list.querySelectorAll('li'))) {
-        const html = li.innerHTML;
-        if (!html.includes('<span class="time">')) {
-          const replaced = html.replace(timeRegex, '<span class="time">$1</span>');
-          li.innerHTML = replaced;
-        }
+        const text = li.textContent || '';
+        li.innerHTML = text.replace(timeRegex, (m) => `<span class="time">${m}</span>`);
       }
     }
 
