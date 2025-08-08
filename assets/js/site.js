@@ -62,7 +62,7 @@ async function populateSite() {
     // Home education
     const homeEdu = document.getElementById('home-education');
     if (homeEdu && Array.isArray(data.education) && data.education.length) {
-      homeEdu.innerHTML = `<h2>Education</h2><ul>${data.education.map((e) => `<li>${e}</li>`).join('')}</ul>`;
+      homeEdu.innerHTML = `<h2>Education</h2><ul class="edu-list">${data.education.map((e) => `<li><span class=\"edu-bullet\"></span><span>${e}</span></li>`).join('')}</ul>`;
     }
 
     const aboutEl = document.getElementById('about-content');
