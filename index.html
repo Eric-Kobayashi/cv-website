@@ -37,7 +37,7 @@
               </div>
             </div>
             <div class="hero-photo-wrap">
-              <div class="hero-photo" aria-hidden="true"></div>
+              <img id="hero-photo" class="hero-photo" src="assets/img/profile.jpg" alt="Profile photo" loading="lazy" />
             </div>
           </div>
         </div>
@@ -67,6 +67,7 @@
       <section class="container content" x-show="isActive('about')">
         <h1>About</h1>
         <div class="prose" id="about-content"></div>
+        <div id="about-extra" class="prose"></div>
       </section>
 
       <section class="container content" x-show="isActive('publications')">
