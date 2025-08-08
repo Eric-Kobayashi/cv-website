@@ -41,10 +41,10 @@ async function populateSite() {
     if (heroLinks) {
       const links = [];
       if (data.email) {
-        links.push(`<a href="mailto:${data.email}"><img src="assets/img/linkedin.svg" alt="" class="icon" aria-hidden="true" />${data.email}</a>`);
+        links.push(`<a href="mailto:${data.email}"><img src="assets/img/mail.svg" alt="Email" class="icon" aria-hidden="true" />${data.email}</a>`);
       }
       // LinkedIn handle hardcoded for now per previous contact list
-      links.push(`<a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="" class="icon" aria-hidden="true" />LinkedIn</a>`);
+      links.push(`<a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="LinkedIn" class="icon" aria-hidden="true" />LinkedIn</a>`);
       heroLinks.innerHTML = links.join('');
     }
 
@@ -62,7 +62,40 @@ async function populateSite() {
     // Home education
     const homeEdu = document.getElementById('home-education');
     if (homeEdu && Array.isArray(data.education) && data.education.length) {
-      homeEdu.innerHTML = `<h2>Education</h2><ul class="edu-list">${data.education.map((e) => `<li><span class=\"edu-bullet\"></span><span>${e}</span></li>`).join('')}</ul>`;
+      function splitEducationEntry(entry) {
+        const str = String(entry || '');
+        // Capture a year or year range (e.g., 2018 or 2021 – 2024 or 2021-2024), optionally with "Present"
+        const match = str.match(/\b(\d{4}(?:\s*[-–—]\s*(?:Present|\d{4}))?)\b/i);
+        if (!match) {
+          return { years: '', text: str.trim() };
+        }
+        const years = match[1].replace(/\s+/g, ' ').trim();
+        let rest = (str.slice(0, match.index) + str.slice(match.index + match[0].length));
+        // Clean up leftover punctuation/spaces around the removed years
+        rest = rest
+          .replace(/\s*,\s*·/g, ' ·') // fix ", ·" -> " ·"
+          .replace(/\s*,\s*$/g, '') // remove trailing comma
+          .replace(/\s{2,}/g, ' ') // collapse spaces
+          .replace(/\s*,\s*,/g, ', ') // double commas
+          .replace(/\s*,\s*$/g, '')
+          .trim();
+        // If a comma remains before a middle dot, reduce to a single space
+        rest = rest.replace(/,\s*·/g, ' ·');
+        // Also remove a leading/trailing middle dot if dangling
+        rest = rest.replace(/^·\s*/, '').replace(/\s*·\s*$/,'');
+        // Prefer using a middle dot between degree and institution if not present but a comma exists
+        // (non-destructive; leave original separators as-is otherwise)
+        return { years, text: rest };
+      }
+
+      const eduHtml = data.education.map((e) => {
+        const { years, text } = splitEducationEntry(e);
+        const yearsHtml = years ? `<div class="edu-years">${years}</div>` : '';
+        const textHtml = `<div class="edu-text">${text || String(e)}</div>`;
+        return `<li><span class="edu-bullet"></span><div class="edu-item">${yearsHtml}${textHtml}</div></li>`;
+      }).join('');
+
+      homeEdu.innerHTML = `<h2>Education</h2><ul class="edu-list">${eduHtml}</ul>`;
     }
 
     const aboutEl = document.getElementById('about-content');
