@@ -42,8 +42,8 @@ async function populateSite() {
       summaryEl.textContent = data.summary;
     }
     const keywordsEl = document.getElementById('home-keywords');
-    if (keywordsEl && Array.isArray(data.keywords)) {
-      keywordsEl.innerHTML = data.keywords.map((k) => `<span class="chip">${k}</span>`).join('');
+    if (keywordsEl && Array.isArray(data.interests)) {
+      keywordsEl.innerHTML = data.interests.map((k) => `<span class="chip">${k}</span>`).join('');
     }
 
     const aboutEl = document.getElementById('about-content');
