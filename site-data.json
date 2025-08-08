@@ -4,6 +4,19 @@
   "location": "Exeter, UK",
   "tagline": "Croucher Postdoctoral Research Fellow, University of Exeter",
   "about": "May Chim is a Croucher Postdoctoral Research Fellow at the University of Exeter working at the interface of volcanology, climate dynamics, and atmospheric chemistry. During her PhD in Chemistry at the University of Cambridge, she developed UKESM-VPLUME — a framework coupling a one‑dimensional volcanic plume model with the UK Earth System Model — and conducted more than 5000 model‑years of simulations. Her work shows that (i) climate projection studies very likely underestimate future volcanic forcing and its climate effects, (ii) future volcanic forcing can contribute up to ~49% of climate uncertainty, and (iii) future eruptions may delay Antarctic ozone hole recovery. Previously, during her MPhil at CUHK, she studied the role of water in heterogeneous oxidation of atmospheric organic aerosols.",
+  "photo": "assets/img/profile.jpg",
+  "education": [
+    "PhD in Chemistry, 2021–2024 · University of Cambridge",
+    "MPhil in Earth and Atmospheric Science, 2018 · The Chinese University of Hong Kong",
+    "BSc in Earth System Science, 2016 · The Chinese University of Hong Kong"
+  ],
+  
+  "interests": [
+    "Climate modelling",
+    "Aerosol Chemistry",
+    "Volcanic aerosols",
+    "Geoengineering (Stratospheric Aerosol Injection)"
+  ],
   "publications": [
     "Chim, M. M., Aubry, T. J., Smith, C., & Schmidt, A. (2025). Neglecting future sporadic volcanic eruptions underestimates climate uncertainty. Communications Earth & Environment, 6, 236 (2025).",
     "Chim, M. M., Aubry, T. J., Abraham, N. L., Marshall, L., Mulcahy, J., Walton, J., & Schmidt, A. (2023). Climate projections very likely underestimate future volcanic forcing and its climatic effects. Geophysical Research Letters, 50(12), e2023GL103743.",

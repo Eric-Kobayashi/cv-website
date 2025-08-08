@@ -62,7 +62,7 @@ body {
 .button { display: inline-block; padding: 10px 14px; border-radius: 10px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; }
 .button-outline { background: transparent; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--bg)); }
 .hero-photo-wrap { display: grid; place-items: center; }
-.hero-photo { width: 200px; height: 200px; border-radius: 20px; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 36%, #999), #bbb); opacity: 0.4; }
+.hero-photo { width: 200px; height: 200px; border-radius: 20px; object-fit: cover; display: block; }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }

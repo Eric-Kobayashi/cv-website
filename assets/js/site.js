@@ -40,6 +40,19 @@ async function populateSite() {
     if (aboutEl && data.about) {
       aboutEl.innerHTML = `<p>${data.about}</p>`;
     }
+    const aboutExtra = document.getElementById('about-extra');
+    if (aboutExtra) {
+      const edu = Array.isArray(data.education) ? data.education : [];
+      const interests = Array.isArray(data.interests) ? data.interests : [];
+      const parts = [];
+      if (edu.length) {
+        parts.push(`<h2>Education</h2><ul>${edu.map((e) => `<li>${e}</li>`).join('')}</ul>`);
+      }
+      if (interests.length) {
+        parts.push(`<h2>Interests</h2><ul>${interests.map((i) => `<li>${i}</li>`).join('')}</ul>`);
+      }
+      aboutExtra.innerHTML = parts.join('');
+    }
 
     const pubList = document.getElementById('pub-list');
     if (pubList && Array.isArray(data.publications)) {
@@ -80,6 +93,11 @@ async function populateSite() {
     }
     const locEl = document.getElementById('contact-location');
     if (locEl && data.location) locEl.textContent = data.location;
+
+    const heroImg = document.getElementById('hero-photo');
+    if (heroImg && data.photo) {
+      heroImg.src = data.photo;
+    }
   } catch {}
 }
 
