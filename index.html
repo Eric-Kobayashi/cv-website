@@ -43,24 +43,10 @@
         </div>
       </section>
 
-      <section class="home-panels" x-show="isActive('home')">
-        <div class="container panels-grid">
-          <a class="panel" href="#about" @click.prevent="goto('about')">
-            <h3>About</h3>
-            <p>Bio and research interests extracted from the CV.</p>
-          </a>
-          <a class="panel" href="#publications" @click.prevent="goto('publications')">
-            <h3>Publications</h3>
-            <p>Selected works with links and citations.</p>
-          </a>
-          <a class="panel" href="#projects" @click.prevent="goto('projects')">
-            <h3>Projects</h3>
-            <p>Current projects and collaborations.</p>
-          </a>
-          <a class="panel" href="#contact" @click.prevent="goto('contact')">
-            <h3>Contact</h3>
-            <p>Email and location from the CV.</p>
-          </a>
+      <section class="home-summary" x-show="isActive('home')">
+        <div class="container summary-inner">
+          <div id="home-summary" class="summary-text"></div>
+          <div id="home-keywords" class="chips"></div>
         </div>
       </section>
 

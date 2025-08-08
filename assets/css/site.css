@@ -69,13 +69,11 @@ body {
   .hero-photo { width: 140px; height: 140px; }
 }
 
-.home-panels { padding: 24px 0 56px; }
-.panels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.panel { border: 1px solid var(--border); padding: 16px; border-radius: 12px; text-decoration: none; color: inherit; }
-.panel:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); box-shadow: 0 4px 18px color-mix(in srgb, var(--accent) 14%, transparent); }
-
-@media (max-width: 900px) { .panels-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .panels-grid { grid-template-columns: 1fr; } }
+.home-summary { padding: 12px 0 56px; }
+.summary-inner { display: grid; gap: 14px; justify-items: start; }
+.summary-text { max-width: 70ch; color: var(--muted); font-size: 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); background: color-mix(in srgb, var(--bg) 88%, transparent); }
 
 .content { padding: 32px 0 64px; }
 .prose p { margin: 0 0 12px; }
