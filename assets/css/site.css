@@ -141,8 +141,6 @@ body {
 .timeline .item-body { min-width: 0; }
 .timeline .item-list { margin: 0; padding-left: 18px; }
 .timeline .item-list li { margin: 6px 0; }
-.timeline li.group::before { display: none; }
-.timeline li.group:first-child::before { display: block; }
 .timeline li:hover .time {
   transform: translateY(-1px);
   background: color-mix(in srgb, var(--accent) 20%, var(--bg));
