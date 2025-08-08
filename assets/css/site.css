@@ -144,6 +144,7 @@ html { scrollbar-gutter: stable both-edges; }
 .timeline .item-body { min-width: 0; }
 .timeline .item-list { margin: 0; padding-left: 0; }
 .timeline .item-list li { margin: 6px 0; }
+#projects-list .item-list { list-style: none; }
 .timeline > li:hover .time {
   transform: translateY(-1px);
   background: color-mix(in srgb, var(--accent) 20%, var(--bg));
