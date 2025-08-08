@@ -46,6 +46,12 @@ async function populateSite() {
       keywordsEl.innerHTML = data.interests.map((k) => `<span class="chip">${k}</span>`).join('');
     }
 
+    // Home education
+    const homeEdu = document.getElementById('home-education');
+    if (homeEdu && Array.isArray(data.education) && data.education.length) {
+      homeEdu.innerHTML = `<h2>Education</h2><ul>${data.education.map((e) => `<li>${e}</li>`).join('')}</ul>`;
+    }
+
     const aboutEl = document.getElementById('about-content');
     if (aboutEl && data.about) {
       aboutEl.innerHTML = `<p>${data.about}</p>`;
