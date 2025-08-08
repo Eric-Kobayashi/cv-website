@@ -81,6 +81,10 @@ html { scrollbar-gutter: stable both-edges; }
 .summary-text { max-width: 63ch; color: var(--muted); font-size: 18px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); background: color-mix(in srgb, var(--bg) 88%, transparent); }
+/* Education list styling */
+.edu-list { list-style: none; padding-left: 0; display: grid; gap: 8px; margin: 6px 0 0; }
+.edu-list li { display: grid; grid-template-columns: 10px 1fr; align-items: start; gap: 10px; }
+.edu-list .edu-bullet { width: 6px; height: 6px; border-radius: 999px; background: var(--accent); margin-top: 10px; display: inline-block; }
 
 .content { padding: 32px 0 64px; }
 .prose p { margin: 0 0 12px; }
