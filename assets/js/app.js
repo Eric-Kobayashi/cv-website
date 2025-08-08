@@ -1,0 +1,35 @@
+function app() {
+  return {
+    navItems: [
+      { key: 'home', label: 'Home' },
+      { key: 'about', label: 'About' },
+      { key: 'publications', label: 'Publications' },
+      { key: 'projects', label: 'Projects' },
+      { key: 'awards', label: 'Awards' },
+      { key: 'teaching', label: 'Teaching' },
+      { key: 'talks', label: 'Talks' },
+      { key: 'service', label: 'Service' },
+      { key: 'cv', label: 'CV' },
+      { key: 'contact', label: 'Contact' },
+    ],
+    view: 'home',
+    init() {
+      const setFromHash = () => {
+        const hash = (location.hash || '#home').replace('#', '');
+        const valid = this.navItems.some((n) => n.key === hash);
+        this.view = valid ? hash : 'home';
+      };
+      setFromHash();
+      window.addEventListener('hashchange', setFromHash);
+      if (typeof window.populateSite === 'function') {
+        window.populateSite();
+      }
+    },
+    goto(key) {
+      this.view = key;
+      location.hash = key;
+    },
+    isActive(key) { return this.view === key; },
+  };
+}
+
