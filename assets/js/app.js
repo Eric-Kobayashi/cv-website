@@ -26,8 +26,14 @@ function app() {
       }
     },
     goto(key) {
+      const changed = this.view !== key;
       this.view = key;
       location.hash = key;
+      // Force Alpine to re-render embedded objects (e.g., PDF) when switching back to a view
+      if (changed && typeof window.populateSite === 'function') {
+        // populateSite is idempotent and cheap
+        window.populateSite();
+      }
     },
     isActive(key) { return this.view === key; },
   };
