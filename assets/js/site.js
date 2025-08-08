@@ -105,11 +105,20 @@ async function populateSite() {
           }
         }
       }
+      function sortValue(label) {
+        if (!label) return -Infinity;
+        if (/present/i.test(label)) return 9999;
+        const nums = Array.from(label.matchAll(/\b(\d{4})\b/g)).map((m) => parseInt(m[1], 10));
+        if (!nums.length) return -Infinity;
+        return Math.max(...nums);
+      }
+      const labels = Array.from(groups.keys()).sort((a, b) => sortValue(b) - sortValue(a));
       const html = [];
-      for (const [label, texts] of groups.entries()) {
+      for (const label of labels) {
+        const texts = groups.get(label) || [];
         const timeHtml = label ? `<span class="time">${label}</span>` : '';
         const listHtml = `<ul class="item-list">${texts.map((t) => `<li>${t}</li>`).join('')}</ul>`;
-        html.push(`<li><div class="time-list">${timeHtml}</div><div class="item-body">${listHtml}</div></li>`);
+        html.push(`<li class="group"><div class="time-list">${timeHtml}</div><div class="item-body">${listHtml}</div></li>`);
       }
       listEl.innerHTML = html.join('');
     }

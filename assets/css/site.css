@@ -105,12 +105,12 @@ body {
 }
 .timeline li {
   position: relative;
-  padding-left: 56px; /* bigger gap between line/dot and content */
+  padding-left: 56px; /* left rail gap */
   margin: 16px 0;
   line-height: 1.6;
   display: grid;
-  grid-template-columns: 180px 1fr; /* reserve a fixed column for time badges */
-  column-gap: 12px;
+  grid-template-columns: 220px 1fr; /* more space for content on the right */
+  column-gap: 18px; /* larger gap between time and content */
   align-items: baseline;
 }
 .timeline li::before {
@@ -141,6 +141,8 @@ body {
 .timeline .item-body { min-width: 0; }
 .timeline .item-list { margin: 0; padding-left: 18px; }
 .timeline .item-list li { margin: 6px 0; }
+.timeline li.group::before { display: none; }
+.timeline li.group:first-child::before { display: block; }
 .timeline li:hover .time {
   transform: translateY(-1px);
   background: color-mix(in srgb, var(--accent) 20%, var(--bg));
