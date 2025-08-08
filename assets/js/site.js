@@ -62,63 +62,33 @@ async function populateSite() {
     }
 
     const projList = document.getElementById('projects-list');
-    if (projList && Array.isArray(data.projects)) {
-      projList.innerHTML = data.projects.map((p) => `<li>${p}</li>`).join('');
-    }
 
     const awardsList = document.getElementById('awards-list');
-    if (awardsList && Array.isArray(data.awards)) {
-      awardsList.innerHTML = data.awards.map((p) => `<li>${p}</li>`).join('');
-    }
 
     const teachingList = document.getElementById('teaching-list');
-    if (teachingList && Array.isArray(data.teaching)) {
-      teachingList.innerHTML = data.teaching.map((p) => `<li>${p}</li>`).join('');
-    }
 
     const talksList = document.getElementById('talks-list');
-    if (talksList && Array.isArray(data.talks)) {
-      talksList.innerHTML = data.talks.map((p) => `<li>${p}</li>`).join('');
-    }
 
     const serviceList = document.getElementById('service-list');
-    if (serviceList && Array.isArray(data.service)) {
-      serviceList.innerHTML = data.service.map((p) => `<li>${p}</li>`).join('');
+
+    function renderTimeline(listEl, items) {
+      if (!listEl || !Array.isArray(items)) return;
+      listEl.innerHTML = items.map((item) => {
+        if (typeof item === 'string') {
+          return `<li><div class="time-list"></div><div class="item-body">${item}</div></li>`;
+        }
+        const times = Array.isArray(item.times) ? item.times : (item.time ? [item.time] : []);
+        const timeHtml = times.map((t) => `<span class=\"time\">${t}</span>`).join('');
+        const body = item.text || '';
+        return `<li><div class="time-list">${timeHtml}</div><div class="item-body">${body}</div></li>`;
+      }).join('');
     }
 
-    // Enhance all timeline lists with time extraction (avoid matching numbers like 5000)
-    const timeRegex = /\b(?:19|20|21)\d{2}(?:\s*(?:–|—|-|to)\s*(?:(?:19|20|21)\d{2}|Present))?\b/g; // year or year-range
-
-    function renderTimelineItem(li, moveTimesToFront) {
-      const text = (li.textContent || '').trim();
-      const times = Array.from(new Set((text.match(timeRegex) || []).map((t) => t)));
-      let body = text;
-      if (times.length) {
-        body = text.replace(timeRegex, '').replace(/\s{2,}/g, ' ').replace(/^[,;:\s-]+/, '').trim();
-      }
-      li.innerHTML = '';
-      const timeList = document.createElement('div');
-      timeList.className = 'time-list';
-      for (const t of times) {
-        const span = document.createElement('span');
-        span.className = 'time';
-        span.textContent = t;
-        timeList.appendChild(span);
-      }
-      li.appendChild(timeList);
-      const bodyDiv = document.createElement('div');
-      bodyDiv.className = 'item-body';
-      bodyDiv.textContent = body;
-      li.appendChild(bodyDiv);
-    }
-
-    // Talks and other timelines: render times in a left column, body aligned left with gap
-    const timelineLists = [talksList, awardsList, projList, document.getElementById('teaching-list'), document.getElementById('service-list')].filter(Boolean);
-    for (const list of timelineLists) {
-      for (const li of Array.from(list.querySelectorAll('li'))) {
-        renderTimelineItem(li, true);
-      }
-    }
+    renderTimeline(projList, data.projects);
+    renderTimeline(awardsList, data.awards);
+    renderTimeline(teachingList, data.teaching);
+    renderTimeline(talksList, data.talks);
+    renderTimeline(serviceList, data.service);
 
     const emailEl = document.getElementById('contact-email');
     if (emailEl && data.email) {
