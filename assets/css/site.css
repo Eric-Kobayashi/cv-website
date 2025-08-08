@@ -109,8 +109,8 @@ body {
   margin: 16px 0;
   line-height: 1.6;
   display: grid;
-  grid-template-columns: 220px 1fr; /* more space for content on the right */
-  column-gap: 18px; /* larger gap between time and content */
+  grid-template-columns: 160px 1fr; /* slimmer time column, more room for content */
+  column-gap: 14px; /* moderate gap between time and content */
   align-items: baseline;
 }
 .timeline li::before {
@@ -139,7 +139,7 @@ body {
 }
 .timeline .time-list { display: flex; flex-wrap: wrap; gap: 6px; }
 .timeline .item-body { min-width: 0; }
-.timeline .item-list { margin: 0; padding-left: 18px; }
+.timeline .item-list { margin: 0; padding-left: 0; }
 .timeline .item-list li { margin: 6px 0; }
 .timeline li:hover .time {
   transform: translateY(-1px);
