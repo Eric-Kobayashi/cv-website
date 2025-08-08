@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <meta name="color-scheme" content="light dark" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html">CV Website</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <nav class="nav" data-nav>
+          <a href="about.html">about</a>
+          <a href="publications.html">publications</a>
+          <a href="projects.html">projects</a>
+          <a href="awards.html">awards</a>
+          <a href="teaching.html">teaching</a>
+          <a href="talks.html">talks</a>
+          <a href="service.html">service</a>
+          <a href="cv.html">cv</a>
+          <a href="contact.html">contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <h1 id="hero-name">Your Name</h1>
+              <p class="subtitle" id="hero-tagline">Short professional tagline from CV</p>
+              <div class="hero-actions">
+                <a class="button" href="cv.html">View CV</a>
+                <a class="button button-outline" href="publications.html">Publications</a>
+              </div>
+            </div>
+            <div class="hero-photo-wrap">
+              <div class="hero-photo" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-panels">
+        <div class="container panels-grid">
+          <a class="panel" href="about.html">
+            <h3>About</h3>
+            <p>Bio and research interests extracted from the CV.</p>
+          </a>
+          <a class="panel" href="publications.html">
+            <h3>Publications</h3>
+            <p>Selected works with links and citations.</p>
+          </a>
+          <a class="panel" href="projects.html">
+            <h3>Projects</h3>
+            <p>Current projects and collaborations.</p>
+          </a>
+          <a class="panel" href="contact.html">
+            <h3>Contact</h3>
+            <p>Email and location from the CV.</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> <span id="footer-name">Your Name</span>. Built as a minimalist static site.</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/site-data.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+  </html>
+
