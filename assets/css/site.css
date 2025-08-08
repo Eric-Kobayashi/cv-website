@@ -109,12 +109,13 @@ body {
   position: relative;
   padding-left: 36px;
   margin: 16px 0;
+  line-height: 1.6;
 }
 .timeline li::before {
   content: "";
   position: absolute;
   left: 6px;
-  top: 0.9em; /* align dot vertically with time badge */
+  top: 0.72em; /* fine-tune alignment with time badge baseline */
   width: 16px;
   height: 16px;
   background: var(--bg);
@@ -126,15 +127,14 @@ body {
 /* Time badge and subtle hover animation */
 .timeline .time {
   display: inline-block;
-  padding: 0px 6px;
+  padding: 1px 6px;
   margin-right: 8px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--accent) 12%, var(--bg));
   color: var(--accent-ink);
   transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+  vertical-align: middle;
 }
-.timeline li { display: flex; align-items: center; gap: 6px; }
-.timeline li > .time + * { margin-left: 0; }
 .timeline li:hover .time {
   transform: translateY(-1px);
   background: color-mix(in srgb, var(--accent) 20%, var(--bg));
