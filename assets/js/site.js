@@ -234,14 +234,14 @@ async function populateSite() {
             ? `<div class="card-media"><img src="${image}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"/></div>`
             : `<div class="card-media" aria-hidden="true"></div>`;
           return `
-            <article class="card">
+            <a class="card" href="${url}" target="_blank" rel="noopener noreferrer">
               ${imgHtml}
               <div class="card-body">
                 <div class="card-kicker">${kicker}</div>
-                <h3 class="card-title"><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+                <h3 class="card-title">${title}</h3>
                 <div class="card-source">${source}</div>
               </div>
-            </article>
+            </a>
           `;
         })
         .join('');
