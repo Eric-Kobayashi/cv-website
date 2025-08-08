@@ -19,6 +19,10 @@
     "Climate Uncertainty"    
   ],
   "publications": [
+    {
+      "title": "Chim, M. M. et al. (in preparation). Future volcanic eruptions may delay the recovery of lower stratospheric ozone over Antarctica and Southern Hemisphere mid‑latitudes.",
+      "url": ""
+    }
     { "title": "Chim, M. M., Aubry, T. J., Smith, C., & Schmidt, A. (2025). Neglecting future sporadic volcanic eruptions underestimates climate uncertainty. Communications Earth & Environment, 6, 236 (2025).", "url": "https://www.nature.com/articles/s43247-025-02208-1" },
     { "title": "Chim, M. M., Aubry, T. J., Abraham, N. L., Marshall, L., Mulcahy, J., Walton, J., & Schmidt, A. (2023). Climate projections very likely underestimate future volcanic forcing and its climatic effects. Geophysical Research Letters, 50(12), e2023GL103743.", "url": "https://doi.org/10.1029/2023GL103743" },
     { "title": "Chim, M. M., Maters, E. C., Morin, J., Kavanagh, J. L., Donovan, A., Aubry, T. J., & Schmidt, A. (2023). Disproportionate impacts of the COVID‑19 pandemic on early career and disabled researchers in volcanology. Frontiers in Earth Science, 11.", "url": "https://www.frontiersin.org/journals/earth-science/articles/10.3389/feart.2023.1291975/full" },
@@ -29,7 +33,7 @@
     { "title": "Kwong, K. C., Chim, M. M., Davies, J. F., Wilson, K. R., & Chan, M. N. (2018). Importance of Sulfate Radical Anion Formation and Chemistry in Heterogeneous OH Oxidation of Sodium Methyl Sulfate. Atmospheric Chemistry and Physics, 18(4), 2809–2820.", "url": "https://acp.copernicus.org/articles/18/2809/2018/" },
     { "title": "Chim, M. M., Cheng, C. T., Davies, J. F., Berkemeier, T., Shiraiwa, M., Zuend, A., & Chan, M. N. (2017). Compositional Evolution of Particle‑Phase Reaction Products and Water in the Heterogeneous OH Oxidation of Aqueous Organic Droplets. Atmospheric Chemistry and Physics, 17, 14415–14431.", "url": "https://acp.copernicus.org/articles/17/14415/2017/" },
     { "title": "Chim, M. M., Chow, C. Y., Davies, J. F., & Chan, M. N. (2017). Effects of Relative Humidity and Particle‑Phase Water on the Heterogeneous OH Oxidation of 2‑Methylglutaric Acid Aqueous Droplets. The Journal of Physical Chemistry A, 121(8), 1666–1674.", "url": "https://pubs.acs.org/doi/10.1021/acs.jpca.6b11606" },
-    { "title": "Chim, M. M. et al. (in preparation). Future volcanic eruptions may delay the recovery of lower stratospheric ozone over Antarctica and Southern Hemisphere mid‑latitudes.", "url": "" }
+
   ],
   "projects": [
     { "times": ["2025 – Present"], "text": "Croucher Postdoctoral Research Fellow, University of Exeter — Developing an interdisciplinary modelling framework integrating an Earth System Model with global crop models to quantify food‑security risks from large explosive volcanic eruptions; team lead for the Fresh Eyes on CMIP volcanic forcing subgroup supporting CMIP7/IPCC." },
@@ -42,15 +46,14 @@
     { "times": ["2024"], "text": "Croucher Postdoctoral Fellowship (2-year independent postdoctoral research fellowship)" },
     { "times": ["2024"], "text": "Finalist in <a href=\"https://www.stemforbritain.org.uk/\">STEM for Britain</a> (UK early career scientist research poster competition)" },
     { "times": ["2024"], "text": "Cambridge Philosophical Society Travel Grant" },
-    { "times": ["2024"], "text": "CMIP International Project Office Travel Support Fund to attend EGU 2024" },
     { "times": ["2023"], "text": "American Geophysical Union Outstanding Student Presentation Award (Oral)" },
     { "times": ["2023"], "text": "University of Cambridge Department of Chemistry Showcase Week Best Talk Runner-up" },
     { "times": ["2023"], "text": "International Association of Volcanology and Chemistry of the Earth's Interior (IAVCEI) Scientific Assembly Conference grant" },
     { "times": ["2023"], "text": "Volcanic Impacts on Climate and Society (VICS) Early Career Travel Grant" },
     { "times": ["2023"], "text": "Joseph Needham Merit Scholarship (4th year PhD funding at University of Cambridge)" },
     { "times": ["2023"], "text": "Bob Hunter Prize, Honourable Mentions (Runner-up for best student oral presentation at Volcanic and Magmatic Studies Group annual meeting)" },
-    { "times": ["2022"], "text": "Peterhouse Bruckmann Fund Award" },
-    { "times": ["2022"], "text": "Peterhouse Greta Burkill Award" },
+    { "times": ["2022"], "text": "Peterhouse (University of Cambridge) Bruckmann Fund Travel Grant" },
+    { "times": ["2022"], "text": "Peterhouse (University of Cambridge) Greta Burkill Award (Travel Grant)" },
     { "times": ["2021"], "text": "American Geophysical Union Outstanding Student Presentation Award (Poster)" },
     { "times": ["2021"], "text": "Croucher Cambridge International Scholarship (Full PhD funding at University of Cambridge)" },
     { "times": ["2018"], "text": "Award of Outstanding Service, CUHK Earth System Science Programme" },

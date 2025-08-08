@@ -77,9 +77,26 @@ async function populateSite() {
         .map((p) => {
           if (typeof p === 'string') return `<li>${p}</li>`;
           if (p && typeof p === 'object' && p.title) {
-            const title = p.title;
+            const citation = p.title;
             const url = p.url;
-            return url ? `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></li>` : `<li>${title}</li>`;
+            if (url) {
+              // Try to detect the paper title within the citation and link only that
+              // Heuristic: after ") . " (year) comes the paper title sentence up to the next period
+              let titleOnly = null;
+              let m = citation.match(/\(\d{4}\)\.\s+(.+?)\.(?:\s|$)/);
+              if (!m) {
+                // Fallback heuristic: first sentence after "). "
+                m = citation.match(/\)\.\s+([^\.]+)\./);
+              }
+              if (m && m[1]) {
+                titleOnly = m[1];
+                const linked = citation.replace(titleOnly, `<a href="${url}" target="_blank" rel="noopener noreferrer">${titleOnly}</a>`);
+                return `<li>${linked}</li>`;
+              }
+              // Final fallback: link the whole citation
+              return `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${citation}</a></li>`;
+            }
+            return `<li>${citation}</li>`;
           }
           return '';
         })
