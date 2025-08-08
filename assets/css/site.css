@@ -97,6 +97,7 @@ html { scrollbar-gutter: stable both-edges; }
 
 /* Featured cards */
 .home-featured { padding: 8px 0 56px; }
+.home-featured-inline { width: 100%; }
 .section-title { font-size: 22px; margin: 0 0 14px; }
 .cards-grid {
   display: grid;
