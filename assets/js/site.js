@@ -161,13 +161,15 @@ async function populateSite() {
     renderTimeline(talksList, data.talks);
     // service page removed
 
-    const emailEl = document.getElementById('contact-email');
-    if (emailEl && data.email) {
-      emailEl.textContent = data.email;
-      emailEl.href = `mailto:${data.email}`;
+    // Home contact
+    const homeContact = document.getElementById('home-contact');
+    if (homeContact) {
+      const items = [];
+      if (data.email) items.push(`<li><strong>Email</strong>: <a href="mailto:${data.email}">${data.email}</a></li>`);
+      if (data.location) items.push(`<li><strong>Location</strong>: ${data.location}</li>`);
+      items.push(`<li><a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="LinkedIn" class="icon" />mmchim</a></li>`);
+      homeContact.innerHTML = items.join('');
     }
-    const locEl = document.getElementById('contact-location');
-    if (locEl && data.location) locEl.textContent = data.location;
 
     const heroImg = document.getElementById('hero-photo');
     if (heroImg && data.photo) {
