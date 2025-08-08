@@ -15,7 +15,7 @@
 })();
 
 // Populate pages from site-data.json or inlined SITE_DATA if present
-(async function () {
+async function populateSite() {
   try {
     const data = (typeof window !== 'undefined' && window.SITE_DATA)
       ? window.SITE_DATA
@@ -81,5 +81,9 @@
     const locEl = document.getElementById('contact-location');
     if (locEl && data.location) locEl.textContent = data.location;
   } catch {}
-})();
+}
+
+window.populateSite = populateSite;
+
+(async function () { await populateSite(); })();
 

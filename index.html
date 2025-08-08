@@ -11,35 +11,29 @@
     <link rel="stylesheet" href="assets/css/site.css" />
     <meta name="color-scheme" content="light dark" />
   </head>
-  <body>
+  <body x-data="app()" x-init="init()">
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="index.html">CV Website</a>
+        <a class="brand" href="#home" @click.prevent="goto('home')">CV Website</a>
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         <nav class="nav" data-nav>
-          <a href="about.html">About</a>
-          <a href="publications.html">Publications</a>
-          <a href="projects.html">Projects</a>
-          <a href="awards.html">Awards</a>
-          <a href="teaching.html">Teaching</a>
-          <a href="talks.html">Talks</a>
-          <a href="service.html">Service</a>
-          <a href="cv.html">CV</a>
-          <a href="contact.html">Contact</a>
+          <template x-for="item in navItems" :key="item.key">
+            <a :href="'#' + item.key" @click.prevent="goto(item.key)" :aria-current="isActive(item.key) ? 'page' : null" x-text="item.label"></a>
+          </template>
         </nav>
       </div>
     </header>
 
     <main>
-      <section class="hero">
+      <section class="hero" x-show="isActive('home')">
         <div class="container">
           <div class="hero-grid">
             <div>
               <h1 id="hero-name">Your Name</h1>
               <p class="subtitle" id="hero-tagline">Short professional tagline from CV</p>
               <div class="hero-actions">
-                <a class="button" href="cv.html">View CV</a>
-                <a class="button button-outline" href="publications.html">Publications</a>
+                <a class="button" href="#cv" @click.prevent="goto('cv')">View CV</a>
+                <a class="button button-outline" href="#publications" @click.prevent="goto('publications')">Publications</a>
               </div>
             </div>
             <div class="hero-photo-wrap">
@@ -49,25 +43,78 @@
         </div>
       </section>
 
-      <section class="home-panels">
+      <section class="home-panels" x-show="isActive('home')">
         <div class="container panels-grid">
-          <a class="panel" href="about.html">
+          <a class="panel" href="#about" @click.prevent="goto('about')">
             <h3>About</h3>
             <p>Bio and research interests extracted from the CV.</p>
           </a>
-          <a class="panel" href="publications.html">
+          <a class="panel" href="#publications" @click.prevent="goto('publications')">
             <h3>Publications</h3>
             <p>Selected works with links and citations.</p>
           </a>
-          <a class="panel" href="projects.html">
+          <a class="panel" href="#projects" @click.prevent="goto('projects')">
             <h3>Projects</h3>
             <p>Current projects and collaborations.</p>
           </a>
-          <a class="panel" href="contact.html">
+          <a class="panel" href="#contact" @click.prevent="goto('contact')">
             <h3>Contact</h3>
             <p>Email and location from the CV.</p>
           </a>
         </div>
+      </section>
+
+      <section class="container content" x-show="isActive('about')">
+        <h1>About</h1>
+        <div class="prose" id="about-content"></div>
+      </section>
+
+      <section class="container content" x-show="isActive('publications')">
+        <h1>Selected Publications</h1>
+        <ol class="pub-list" id="pub-list"></ol>
+      </section>
+
+      <section class="container content" x-show="isActive('projects')">
+        <h1>Projects</h1>
+        <ul class="project-list" id="project-list"></ul>
+      </section>
+
+      <section class="container content" x-show="isActive('awards')">
+        <h1>Awards and Honors</h1>
+        <ul class="timeline" id="awards-list"></ul>
+      </section>
+
+      <section class="container content" x-show="isActive('teaching')">
+        <h1>Teaching</h1>
+        <ul class="timeline" id="teaching-list"></ul>
+      </section>
+
+      <section class="container content" x-show="isActive('talks')">
+        <h1>Selected Talks</h1>
+        <ul class="timeline" id="talks-list"></ul>
+      </section>
+
+      <section class="container content" x-show="isActive('service')">
+        <h1>Academic Service</h1>
+        <ul class="timeline" id="service-list"></ul>
+      </section>
+
+      <section class="container content" x-show="isActive('cv')">
+        <h1>Curriculum Vitae</h1>
+        <div class="cv-embed">
+          <object data="CV_MayChim_JRF.pdf" type="application/pdf" width="100%" height="900">
+            <p>Your browser cannot display PDFs. <a class="button" href="CV_MayChim_JRF.pdf">Download the CV</a>.</p>
+          </object>
+        </div>
+      </section>
+
+      <section class="container content" x-show="isActive('contact')">
+        <h1>Contact</h1>
+        <ul class="contact-list">
+          <li><strong>Email</strong>: <a id="contact-email" href="#">name@example.com</a></li>
+          <li><strong>Location</strong>: <span id="contact-location">City, Country</span></li>
+          <li><strong>CV</strong>: <a href="CV_MayChim_JRF.pdf">Download PDF</a></li>
+        </ul>
       </section>
     </main>
 
@@ -77,7 +124,9 @@
       </div>
     </footer>
 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="assets/js/site-data.js"></script>
+    <script src="assets/js/app.js"></script>
     <script src="assets/js/site.js"></script>
   </body>
   </html>
