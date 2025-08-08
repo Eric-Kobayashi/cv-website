@@ -139,6 +139,8 @@ body {
 }
 .timeline .time-list { display: flex; flex-wrap: wrap; gap: 6px; }
 .timeline .item-body { min-width: 0; }
+.timeline .item-list { margin: 0; padding-left: 18px; }
+.timeline .item-list li { margin: 6px 0; }
 .timeline li:hover .time {
   transform: translateY(-1px);
   background: color-mix(in srgb, var(--accent) 20%, var(--bg));
