@@ -7,7 +7,6 @@ function app() {
       { key: 'awards', label: 'Awards' },
       { key: 'teaching', label: 'Teaching' },
       { key: 'talks', label: 'Talks' },
-      { key: 'service', label: 'Service' },
       { key: 'contact', label: 'Contact' },
     ],
     view: 'home',
