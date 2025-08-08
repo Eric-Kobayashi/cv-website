@@ -39,7 +39,8 @@ async function populateSite() {
     // Home summary
     const summaryEl = document.getElementById('home-summary');
     if (summaryEl && data.summary) {
-      summaryEl.textContent = data.summary;
+      // Allow HTML in summary so links render
+      summaryEl.innerHTML = data.summary;
     }
     const keywordsEl = document.getElementById('home-keywords');
     if (keywordsEl && Array.isArray(data.interests)) {
