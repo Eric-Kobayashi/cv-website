@@ -85,6 +85,9 @@ html { scrollbar-gutter: stable both-edges; }
 .edu-list { list-style: none; padding-left: 0; display: grid; gap: 8px; margin: 6px 0 0; }
 .edu-list li { display: grid; grid-template-columns: 10px 1fr; align-items: start; gap: 10px; }
 .edu-list .edu-bullet { width: 6px; height: 6px; border-radius: 999px; background: var(--accent); margin-top: 10px; display: inline-block; }
+.edu-item { display: grid; gap: 2px; }
+.edu-years { font-weight: 600; color: var(--accent-ink); line-height: 1.3; }
+.edu-text { color: var(--text); }
 
 .content { padding: 32px 0 64px; }
 .prose p { margin: 0 0 12px; }
