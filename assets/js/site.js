@@ -61,7 +61,7 @@ async function populateSite() {
         .join('');
     }
 
-    const projList = document.getElementById('project-list');
+    const projList = document.getElementById('projects-list');
     if (projList && Array.isArray(data.projects)) {
       projList.innerHTML = data.projects.map((p) => `<li>${p}</li>`).join('');
     }
@@ -84,6 +84,19 @@ async function populateSite() {
     const serviceList = document.getElementById('service-list');
     if (serviceList && Array.isArray(data.service)) {
       serviceList.innerHTML = data.service.map((p) => `<li>${p}</li>`).join('');
+    }
+
+    // Enhance all timeline lists with time highlighting
+    const timelineLists = [awardsList, projList, document.getElementById('teaching-list'), document.getElementById('talks-list'), document.getElementById('service-list')].filter(Boolean);
+    const timeRegex = /(\b\d{4}(?:–\d{4}|–Present|–\s*Present)?\b)/; // capture a year or a year range
+    for (const list of timelineLists) {
+      for (const li of Array.from(list.querySelectorAll('li'))) {
+        const html = li.innerHTML;
+        if (!html.includes('<span class="time">')) {
+          const replaced = html.replace(timeRegex, '<span class="time">$1</span>');
+          li.innerHTML = replaced;
+        }
+      }
     }
 
     const emailEl = document.getElementById('contact-email');
