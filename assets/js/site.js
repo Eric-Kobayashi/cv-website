@@ -36,6 +36,18 @@ async function populateSite() {
     const taglineEl = document.getElementById('hero-tagline');
     if (taglineEl && data.tagline) taglineEl.textContent = data.tagline;
 
+    // Hero links (email + LinkedIn)
+    const heroLinks = document.getElementById('hero-links');
+    if (heroLinks) {
+      const links = [];
+      if (data.email) {
+        links.push(`<a href="mailto:${data.email}"><img src="assets/img/linkedin.svg" alt="" class="icon" aria-hidden="true" />${data.email}</a>`);
+      }
+      // LinkedIn handle hardcoded for now per previous contact list
+      links.push(`<a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="" class="icon" aria-hidden="true" />LinkedIn</a>`);
+      heroLinks.innerHTML = links.join('');
+    }
+
     // Home summary
     const summaryEl = document.getElementById('home-summary');
     if (summaryEl && data.summary) {
@@ -166,7 +178,6 @@ async function populateSite() {
     if (homeContact) {
       const items = [];
       if (data.email) items.push(`<li><strong>Email</strong>: <a href="mailto:${data.email}">${data.email}</a></li>`);
-      if (data.location) items.push(`<li><strong>Location</strong>: ${data.location}</li>`);
       items.push(`<li><a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="LinkedIn" class="icon" />mmchim</a></li>`);
       homeContact.innerHTML = items.join('');
     }
