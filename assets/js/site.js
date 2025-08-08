@@ -85,7 +85,7 @@ async function populateSite() {
         .join('');
     }
 
-    const projList = document.getElementById('projects-list');
+    const projList = null;
 
     const awardsList = document.getElementById('awards-list');
 
@@ -137,7 +137,7 @@ async function populateSite() {
       listEl.innerHTML = html.join('');
     }
 
-    renderTimeline(projList, data.projects);
+    // projects page removed
     renderTimeline(awardsList, data.awards);
     renderTimeline(teachingList, data.teaching);
     renderTimeline(talksList, data.talks);

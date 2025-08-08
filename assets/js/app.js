@@ -3,7 +3,6 @@ function app() {
     navItems: [
       { key: 'home', label: 'Home' },
       { key: 'publications', label: 'Publications' },
-      { key: 'projects', label: 'Projects' },
       { key: 'awards', label: 'Awards' },
       { key: 'teaching', label: 'Teaching' },
       { key: 'talks', label: 'Talks' },
