@@ -3,10 +3,12 @@
   "email": "m.m.chim@exeter.ac.uk",
   "location": "Exeter, UK",
   "tagline": "Croucher Postdoctoral Research Fellow, University of Exeter",
+  "summary": "Researcher at the nexus of climate change, volcanic forcing, and atmospheric chemistry. I build models and synthesize evidence (from Earth System Models to ice cores and satellites) to understand how eruptions shape climate — past, present, and future.",
+  "keywords": ["Volcanic forcing", "Climate dynamics", "Aerosol chemistry", "Earth System Models", "Uncertainty quantification"],
   "about": "May Chim is a Croucher Postdoctoral Research Fellow at the University of Exeter working at the interface of volcanology, climate dynamics, and atmospheric chemistry. During her PhD in Chemistry at the University of Cambridge, she developed UKESM-VPLUME — a framework coupling a one‑dimensional volcanic plume model with the UK Earth System Model — and conducted more than 5000 model‑years of simulations. Her work shows that (i) climate projection studies very likely underestimate future volcanic forcing and its climate effects, (ii) future volcanic forcing can contribute up to ~49% of climate uncertainty, and (iii) future eruptions may delay Antarctic ozone hole recovery. Previously, during her MPhil at CUHK, she studied the role of water in heterogeneous oxidation of atmospheric organic aerosols.",
   "photo": "assets/img/profile.jpg",
   "education": [
-    "PhD in Chemistry, 2021–2024 · University of Cambridge",
+    "PhD in Chemistry, 2021 – 2024 · University of Cambridge",
     "MPhil in Earth and Atmospheric Science, 2018 · The Chinese University of Hong Kong",
     "BSc in Earth System Science, 2016 · The Chinese University of Hong Kong"
   ],
@@ -31,10 +33,10 @@
     "Chim, M. M. et al. (in preparation). Future volcanic eruptions may delay the recovery of lower stratospheric ozone over Antarctica and Southern Hemisphere mid‑latitudes."
   ],
   "projects": [
-    { "times": ["2025–Present"], "text": "Croucher Postdoctoral Research Fellow, University of Exeter — Developing an interdisciplinary modelling framework integrating an Earth System Model with global crop models to quantify food‑security risks from large explosive volcanic eruptions; team lead for the Fresh Eyes on CMIP volcanic forcing subgroup supporting CMIP7/IPCC." },
-    { "times": ["2021–2024"], "text": "PhD in Chemistry, University of Cambridge (Centre for Atmospheric Science) — Project: Climate impacts of volcanic eruptions. Developed UKESM‑VPLUME; >5000 model‑years of simulations. Found that future volcanic forcing is likely underestimated, can contribute up to ~49% of climate uncertainty, and may delay Antarctic ozone hole recovery." },
-    { "times": ["2016–2018"], "text": "MPhil in Earth & Atmospheric Science, The Chinese University of Hong Kong — Project: Role of water in heterogeneous oxidation of atmospheric organic aerosols. Built an integrated modelling approach combining aerosol oxidation and thermodynamics; showed water content affects oxidation via physical diffusivity changes." },
-    { "times": ["2012–2016"], "text": "Bachelor Thesis, CUHK — Exhumation history of the North China Craton using petrology, EMPA, and geothermobarometry; results support continental–continental collision for the region." }
+    { "times": ["2025 – Present"], "text": "Croucher Postdoctoral Research Fellow, University of Exeter — Developing an interdisciplinary modelling framework integrating an Earth System Model with global crop models to quantify food‑security risks from large explosive volcanic eruptions; team lead for the Fresh Eyes on CMIP volcanic forcing subgroup supporting CMIP7/IPCC." },
+    { "times": ["2021 – 2024"], "text": "PhD in Chemistry, University of Cambridge (Centre for Atmospheric Science) — Project: Climate impacts of volcanic eruptions. Developed UKESM‑VPLUME; >5000 model‑years of simulations. Found that future volcanic forcing is likely underestimated, can contribute up to ~49% of climate uncertainty, and may delay Antarctic ozone hole recovery." },
+    { "times": ["2016 – 2018"], "text": "MPhil in Earth & Atmospheric Science, The Chinese University of Hong Kong — Project: Role of water in heterogeneous oxidation of atmospheric organic aerosols. Built an integrated modelling approach combining aerosol oxidation and thermodynamics; showed water content affects oxidation via physical diffusivity changes." },
+    { "times": ["2012 – 2016"], "text": "Bachelor Thesis, CUHK — Exhumation history of the North China Craton using petrology, EMPA, and geothermobarometry; results support continental–continental collision for the region." }
   ]
   ,
   "awards": [
@@ -57,14 +59,14 @@
     { "times": ["2023"], "text": "Course leader, Volcanoes and Climate Dynamics (one-week short course; CUHK)" },
     { "times": ["2022"], "text": "Demonstrator, UKCA Training Course (National Centre for Atmospheric Science)" },
     { "times": ["2018"], "text": "Teaching Assistant, Atmospheric Chemistry (CUHK)" },
-    { "times": ["2018", "2016"], "text": "Teaching Assistant, Geoscience field study course to Taiwan (CUHK)" },
+    { "times": ["2016", "2018"], "text": "Teaching Assistant, Geoscience field study course to Taiwan (CUHK)" },
     { "times": ["2017"], "text": "Supervisor for four undergraduate students’ summer research projects (CUHK)" },
     { "times": ["2016"], "text": "Teaching Assistant, Petrology (CUHK)" }
   ],
   "talks": [
-    { "times": [], "text": "Volcano2Fork: Mapping global food and nutrition impacts from volcanic eruption, Cambridge, UK (Invited talk)" },
+    { "times": ["2025"], "text": "Volcano2Fork: Mapping global food and nutrition impacts from volcanic eruption, Cambridge, UK (Invited talk)" },
     { "times": ["2025"], "text": "IAVCEI Scientific Assembly 2025, Geneva, Switzerland (Invited talk)" },
-    { "times": [], "text": "Invited seminar, Weather and Climate Risk Group, ETH Zurich, Switzerland (Invited talk)" },
+    { "times": ["2025"], "text": "Invited seminar, Weather and Climate Risk Group, ETH Zurich, Switzerland (Invited talk)" },
     { "times": ["2025"], "text": "EGU General Assembly 2025, Vienna, Austria (Invited talk, keynote speaker)" },
     { "times": ["2024"], "text": "Cambridge Centre for Climate Science Winter Symposium 2024, Cambridge, UK (Oral)" },
     { "times": ["2024"], "text": "CMIP Online Seminar Series 2024 (Invited talk)" },
@@ -79,12 +81,12 @@
     { "times": ["2022"], "text": "EGU General Assembly 2022, Vienna, Austria (Oral)" }
   ],
   "service": [
-    { "times": ["2023–Present"], "text": "Team lead, Volcanic Forcing Subgroup, Fresh Eyes on CMIP Modern Forcings Project" },
+    { "times": ["2023 – Present"], "text": "Team lead, Volcanic Forcing Subgroup, Fresh Eyes on CMIP Modern Forcings Project" },
     { "times": ["2025"], "text": "Co-convenor, \"Interactions between Volcanic Eruptions and Climate\", IAVCEI 2025" },
     { "times": ["2023"], "text": "Co-convenor, \"Interactions between Volcanic Eruptions and Climate\", IAVCEI 2023" },
-    { "times": ["2019–2021"], "text": "Young Fellow Sub-committee, Geological Society of London, Hong Kong Regional Group" },
-    { "times": ["2023–2024"], "text": "Climate-Volcano Science Outreach Project (\u00a39k), Croucher Foundation" },
-    { "times": ["2022–2024"], "text": "Museum Volunteer, Scott Polar Museum, Cambridge" },
+    { "times": ["2019 – 2021"], "text": "Young Fellow Sub-committee, Geological Society of London, Hong Kong Regional Group" },
+    { "times": ["2023 – 2024"], "text": "Climate-Volcano Science Outreach Project (\u00a39k), Croucher Foundation" },
+    { "times": ["2022 – 2024"], "text": "Museum Volunteer, Scott Polar Museum, Cambridge" },
     { "times": ["2023"], "text": "Volcano Outreach Day at the Natural History Museum, London" }
   ]
 }
