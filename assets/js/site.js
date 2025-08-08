@@ -86,33 +86,37 @@ async function populateSite() {
       serviceList.innerHTML = data.service.map((p) => `<li>${p}</li>`).join('');
     }
 
-    // Enhance all timeline lists with time highlighting
-    const timeRegex = /\b\d{4}(?:\s*(?:–|—|-|to)\s*(?:\d{4}|Present))?\b/g; // year or year-range
+    // Enhance all timeline lists with time extraction (avoid matching numbers like 5000)
+    const timeRegex = /\b(?:19|20|21)\d{2}(?:\s*(?:–|—|-|to)\s*(?:(?:19|20|21)\d{2}|Present))?\b/g; // year or year-range
 
-    // Talks: move all time strings to the front, then remaining text
-    if (talksList) {
-      for (const li of Array.from(talksList.querySelectorAll('li'))) {
-        const text = li.textContent || '';
-        const times = Array.from(new Set((text.match(timeRegex) || []).map((t) => t)));
-        const body = text.replace(timeRegex, '').replace(/\s{2,}/g, ' ').replace(/^[,;:\s-]+/, '').trim();
-        li.innerHTML = '';
-        for (const t of times) {
-          const span = document.createElement('span');
-          span.className = 'time';
-          span.textContent = t;
-          li.appendChild(span);
-          li.appendChild(document.createTextNode(' '));
-        }
-        li.appendChild(document.createTextNode(body));
+    function renderTimelineItem(li, moveTimesToFront) {
+      const text = (li.textContent || '').trim();
+      const times = Array.from(new Set((text.match(timeRegex) || []).map((t) => t)));
+      let body = text;
+      if (times.length) {
+        body = text.replace(timeRegex, '').replace(/\s{2,}/g, ' ').replace(/^[,;:\s-]+/, '').trim();
       }
+      li.innerHTML = '';
+      const timeList = document.createElement('div');
+      timeList.className = 'time-list';
+      for (const t of times) {
+        const span = document.createElement('span');
+        span.className = 'time';
+        span.textContent = t;
+        timeList.appendChild(span);
+      }
+      li.appendChild(timeList);
+      const bodyDiv = document.createElement('div');
+      bodyDiv.className = 'item-body';
+      bodyDiv.textContent = body;
+      li.appendChild(bodyDiv);
     }
 
-    // Other timelines: wrap all time occurrences inline
-    const timelineLists = [awardsList, projList, document.getElementById('teaching-list'), document.getElementById('service-list')].filter(Boolean);
+    // Talks and other timelines: render times in a left column, body aligned left with gap
+    const timelineLists = [talksList, awardsList, projList, document.getElementById('teaching-list'), document.getElementById('service-list')].filter(Boolean);
     for (const list of timelineLists) {
       for (const li of Array.from(list.querySelectorAll('li'))) {
-        const text = li.textContent || '';
-        li.innerHTML = text.replace(timeRegex, (m) => `<span class="time">${m}</span>`);
+        renderTimelineItem(li, true);
       }
     }
 

@@ -107,15 +107,19 @@ body {
 }
 .timeline li {
   position: relative;
-  padding-left: 36px;
+  padding-left: 56px; /* bigger gap between line/dot and content */
   margin: 16px 0;
   line-height: 1.6;
+  display: grid;
+  grid-template-columns: 180px 1fr; /* reserve a fixed column for time badges */
+  column-gap: 12px;
+  align-items: baseline;
 }
 .timeline li::before {
   content: "";
   position: absolute;
   left: 6px;
-  top: 0.72em; /* fine-tune alignment with time badge baseline */
+  top: 0.18em; /* fine-tune alignment with time badge baseline */
   width: 16px;
   height: 16px;
   background: var(--bg);
@@ -135,6 +139,8 @@ body {
   transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
   vertical-align: middle;
 }
+.timeline .time-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.timeline .item-body { min-width: 0; }
 .timeline li:hover .time {
   transform: translateY(-1px);
   background: color-mix(in srgb, var(--accent) 20%, var(--bg));
