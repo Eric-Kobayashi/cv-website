@@ -84,6 +84,7 @@ html { scrollbar-gutter: stable both-edges; }
 .project-list { padding-left: 18px; }
 .contact-list { list-style: none; padding: 0; margin: 0; }
 .contact-list li { margin: 8px 0; }
+.contact-list .icon { width: 18px; height: 18px; vertical-align: text-bottom; margin-right: 6px; }
 
 .cv-embed object { border: 1px solid var(--border); border-radius: 12px; }
 
