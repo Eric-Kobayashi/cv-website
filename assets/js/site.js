@@ -191,10 +191,14 @@ async function populateSite() {
         } else if (numericYear) {
           detailsText = `(${year})`;
         }
+        // Inline metrics (Altmetric + Dimensions) appended at end of details line
+        const metricsInline = (altmetricSpan || dimensionsSpan)
+          ? `<span class="pub-metrics-inline">${altmetricSpan}${dimensionsSpan}</span>`
+          : '';
         // If we couldn't split structured parts, fall back to showing the full citation on one line
         const detailsHtml = detailsText
-          ? `<div class="pub-meta">${detailsText}</div>`
-          : (authorsHtml ? '' : `<div class="pub-meta">${emphasizePrimaryAuthor(citation)}</div>`);
+          ? `<div class="pub-meta">${detailsText}${metricsInline}</div>`
+          : (authorsHtml ? (metricsInline ? `<div class="pub-meta">${metricsInline}</div>` : '') : `<div class="pub-meta">${emphasizePrimaryAuthor(citation)}${metricsInline}</div>`);
 
         const citationHtml = `${titleHtml}${authorsHtml}${detailsHtml}`;
         const fullPaperBtn = url
@@ -247,7 +251,6 @@ async function populateSite() {
             ${firstBtn}
             ${spotlightBtn}
             ${fullPaperBtn}
-            <span class="pub-metrics-inline">${altmetricSpan}${dimensionsSpan}</span>
           </div>`;
         const html = isInPrep ? `${citationHtml}` : `${citationHtml}${buttonsHtml}`;
         return { times: label ? [label] : [], text: html };
