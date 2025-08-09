@@ -93,6 +93,7 @@ html { scrollbar-gutter: stable both-edges; }
 @media (max-width: 640px) {
   .hero { padding: 8px 0 16px; margin-top: 0; }
   .hero-grid { gap: 16px; }
+  .hero h1 { font-size: 32px; }
   .hero-photo {
     width: min(56vw, 220px);
     max-width: 220px;
@@ -103,6 +104,22 @@ html { scrollbar-gutter: stable both-edges; }
     margin: 0 auto;
   }
   .home-summary { margin-top: 0; }
+}
+
+/* Responsive timeline adjustments */
+@media (max-width: 640px) {
+  .timeline > li {
+    grid-template-columns: 1fr;
+    padding-left: 40px; /* keep room for lollipop */
+    column-gap: 10px;
+    margin: 14px 0;
+  }
+  .timeline .time-list { margin-bottom: 6px; }
+  #pub-list .time-list,
+  #pub-list .item-body { top: 0; }
+  .timeline .item-list li { margin: 10px 0; }
+  .pub-title { font-size: 15px; }
+  .summary-text { font-size: 16px; }
 }
 
 .home-summary { margin-top: -86px; margin-bottom: 24px;}
