@@ -225,7 +225,7 @@ html { scrollbar-gutter: stable both-edges; }
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0;
+  gap: 1px;
   margin-top: 4px;
 }
 /* Make button spacing ultra-tight (slight overlap) */
@@ -239,7 +239,7 @@ html { scrollbar-gutter: stable both-edges; }
   align-items: top;
   gap: 4px;
   margin-left: 20px;
-  margin-top: -10px;
+  margin-top: -5px;
   height: var(--metrics-height);
   line-height: var(--metrics-height);
   transform: none;
