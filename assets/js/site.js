@@ -206,14 +206,7 @@ async function populateSite() {
     renderTimeline(talksList, data.talks);
     // service page removed
 
-    // Home contact
-    const homeContact = document.getElementById('home-contact');
-    if (homeContact) {
-      const items = [];
-      if (data.email) items.push(`<li><strong>Email</strong>: <a href="mailto:${data.email}">${data.email}</a></li>`);
-      items.push(`<li><a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="LinkedIn" class="icon" />mmchim</a></li>`);
-      homeContact.innerHTML = items.join('');
-    }
+    // Home contact removed per request
 
     const heroImg = document.getElementById('hero-photo');
     if (heroImg && data.photo) {
