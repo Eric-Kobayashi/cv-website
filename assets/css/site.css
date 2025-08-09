@@ -62,14 +62,14 @@ html { scrollbar-gutter: stable both-edges; }
   .nav-toggle { display: inline-flex; }
 }
 
-.hero { padding: 0 0 32px; margin-top: 0; }
-.hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: center; }
+.hero { padding: 0 0 18px; margin-top: 0; }
+.hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 22px; align-items: center; }
 .hero h1 { font-size: 44px; line-height: 1.1; margin: 0 0 8px; }
-.hero-links { display: flex; gap: 12px; align-items: center; margin: 6px 0 10px; flex-wrap: wrap; }
+.hero-links { display: flex; gap: 12px; align-items: center; margin: 6px 0 6px; flex-wrap: wrap; }
 .hero-links a { color: var(--text); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
 .hero-links a:hover { text-decoration: underline; }
 .hero-links .icon { width: 16px; height: 16px; vertical-align: text-bottom; }
-.subtitle { color: var(--muted); margin: 0 0 16px; }
+.subtitle { color: var(--muted); margin: 0 0 10px; }
 .hero-actions { display: flex; gap: 12px; }
 .button { display: inline-block; padding: 10px 14px; border-radius: 10px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; }
 .button-outline { background: transparent; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--bg)); }
@@ -91,8 +91,8 @@ html { scrollbar-gutter: stable both-edges; }
 }
 
 @media (min-width: 901px) {
-  /* Pull summary up slightly to tighten perceived gap while avoiding overlap */
-  .home-summary { margin-top: -28px; }
+  /* Pull summary up more to tighten perceived gap while avoiding overlap */
+  .home-summary { margin-top: -48px; }
 }
 
 /* Small phones: make the hero photo responsive and avoid overlap with next section */
