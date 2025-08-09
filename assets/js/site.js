@@ -120,13 +120,27 @@ async function populateSite() {
 
     const pubList = document.getElementById('pub-list');
     if (pubList && Array.isArray(data.publications)) {
-      // Reuse timeline UI: group by year extracted from citation
+      // Group by year; force "In preparation" to show on top and link only the title part
       const items = data.publications.map((p) => {
         const citation = typeof p === 'string' ? p : (p && p.title) ? p.title : '';
         const url = (p && p.url) ? p.url : '';
+        const isInPrep = /in\s*preparation/i.test(citation);
         const yearMatch = citation.match(/\b(20\d{2}|19\d{2})\b/);
-        const label = yearMatch ? yearMatch[1] : '';
-        const html = url ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${citation}</a>` : citation;
+        const label = isInPrep ? 'In preparation' : (yearMatch ? yearMatch[1] : '');
+
+        let html = citation;
+        if (url) {
+          // Try to detect the paper title within the citation and link only that
+          let titleOnly = null;
+          let m = citation.match(/\(\d{4}\)\.\s+(.+?)\.(?:\s|$)/);
+          if (!m) {
+            m = citation.match(/\)\.\s+([^\.]+)\./);
+          }
+          if (m && m[1]) {
+            titleOnly = m[1];
+            html = citation.replace(titleOnly, `<a href="${url}" target="_blank" rel="noopener noreferrer">${titleOnly}</a>`);
+          }
+        }
         return { times: label ? [label] : [], text: html };
       });
       renderTimeline(pubList, items);
@@ -168,6 +182,7 @@ async function populateSite() {
       }
       function sortValue(label) {
         if (!label) return -Infinity;
+        if (/in\s*prepar/i.test(label)) return 10000; // ensure In preparation at top
         if (/present/i.test(label)) return 9999;
         const nums = Array.from(label.matchAll(/\b(\d{4})\b/g)).map((m) => parseInt(m[1], 10));
         if (!nums.length) return -Infinity;
