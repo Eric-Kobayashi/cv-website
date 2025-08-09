@@ -149,12 +149,15 @@ async function populateSite() {
           : `<span class="btn btn-solid" aria-disabled="true">Full Paper</span>`;
         const isCEECarbonBriefPaper = /Neglecting\s+future\s+sporadic\s+volcanic\s+eruptions\s+underestimates\s+climate\s+uncertainty/i.test(citation);
         const isGRLPaper = /Climate\s+projections\s+very\s+likely\s+underestimate\s+future\s+volcanic\s+forcing/i.test(citation);
+        const isWasteToEnergyPaper = /Waste\s*[-‑–—]?to\s*[-‑–—]?Energy/i.test(citation);
 
         const firstBtn = isCEECarbonBriefPaper
           ? `<a class="btn btn-outline" href="https://www.carbonbrief.org/guest-post-investigating-how-volcanic-eruptions-can-affect-climate-projections/" target="_blank" rel="noopener noreferrer">Carbon Brief</a>`
           : (isGRLPaper
               ? `<a class="btn btn-outline" href="https://www.cam.ac.uk/research/news/effect-of-volcanic-eruptions-significantly-underestimated-in-climate-projections" target="_blank" rel="noopener noreferrer">Press Release</a>`
-              : '');
+              : (isWasteToEnergyPaper
+                  ? `<a class="btn btn-outline" href="https://www.unep.org/news-and-stories/story/rummaging-through-trash-find-clean-energy" target="_blank" rel="noopener noreferrer">Press Release</a>`
+                  : ''));
 
         const spotlightBtn = isGRLPaper
           ? `<a class="btn btn-outline" href="https://eos.org/research-spotlights/volcanoes-future-climate-effects-may-exceed-standard-estimates" target="_blank" rel="noopener noreferrer">Research Spotlight</a>`
