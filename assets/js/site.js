@@ -199,17 +199,22 @@ async function populateSite() {
           doi = String(p.doi);
         } else {
           try {
-            const lower = String(url || '').toLowerCase();
+            const urlStr = String(url || '');
+            const lower = urlStr.toLowerCase();
             const ix = lower.indexOf('doi.org/');
             if (ix !== -1) {
-              doi = url.slice(ix + 'doi.org/'.length).replace(/[#?].*$/, '');
-            } else if (/^10\.\d{4,9}\//.test(url)) {
-              doi = url; // URL itself is a DOI string
+              doi = urlStr.slice(ix + 'doi.org/'.length).replace(/[#?].*$/, '');
+            } else {
+              const m = urlStr.match(/(10\.\d{4,9}\/[-._;()/:A-Z0-9]+)/i);
+              if (m) doi = m[1];
             }
           } catch {}
         }
-        const metricsHtml = doi
-          ? `<div class="pub-metrics">\n               <span class="altmetric-embed" data-badge-type="donut" data-doi="${doi}"></span>\n               <span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_circle"></span>\n             </div>`
+        const altmetricSpan = doi
+          ? `<span class="altmetric-embed" data-badge-type="donut" data-doi="${doi}" data-hide-no-mentions="true"></span>`
+          : (url ? `<span class="altmetric-embed" data-badge-type="donut" data-url="${url}" data-hide-no-mentions="true"></span>` : '');
+        const dimensionsSpan = doi
+          ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_circle"></span>`
           : '';
 
         const buttonsHtml = `
@@ -217,8 +222,9 @@ async function populateSite() {
             ${firstBtn}
             ${spotlightBtn}
             ${fullPaperBtn}
+            <span class="pub-metrics-inline">${altmetricSpan}${dimensionsSpan}</span>
           </div>`;
-        const html = isInPrep ? `${citationHtml}` : `${citationHtml}${metricsHtml}${buttonsHtml}`;
+        const html = isInPrep ? `${citationHtml}` : `${citationHtml}${buttonsHtml}`;
         return { times: label ? [label] : [], text: html };
       });
       renderTimeline(pubList, items);
