@@ -225,9 +225,11 @@ html { scrollbar-gutter: stable both-edges; }
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 0;
   margin-top: 4px;
 }
+/* Make button spacing ultra-tight (slight overlap) */
+.pub-actions .btn + .btn { margin-left: -3px; }
 .pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
 .pub-authors { color: var(--text); line-height: 1.5; }
 .pub-meta { color: var(--muted); position: relative; top: 1px; }
@@ -236,7 +238,7 @@ html { scrollbar-gutter: stable both-edges; }
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-left: 6px;
+  margin-left: 10px;
   margin-top: 0;
   height: var(--metrics-height);
   line-height: var(--metrics-height);
