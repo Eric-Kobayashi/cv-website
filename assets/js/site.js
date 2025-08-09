@@ -135,7 +135,7 @@ async function populateSite() {
         }
         return emphasized;
       }
-      // Group by year; show action buttons beneath each citation
+      // Group by year; show title-first layout, optional metrics, and action buttons
       const items = data.publications.map((p) => {
         const citation = typeof p === 'string' ? p : (p && p.title) ? p.title : '';
         const url = (p && p.url) ? p.url : '';
@@ -143,7 +143,28 @@ async function populateSite() {
         const yearMatch = citation.match(/\b(20\d{2}|19\d{2})\b/);
         const label = isInPrep ? 'In preparation' : (yearMatch ? yearMatch[1] : '');
 
-        const citationHtml = `<div class="pub-citation">${emphasizePrimaryAuthor(citation)}</div>`;
+        // Try to split into authors, year, title, and the remaining (journal/volume/etc.)
+        let authors = '', year = '', titleText = '', rest = '';
+        const splitMatch = citation.match(/^(.+?)\((\d{4})\)\.\s+(.+?)\.?\s*(.*)$/);
+        if (splitMatch) {
+          authors = splitMatch[1].trim();
+          year = splitMatch[2].trim();
+          titleText = splitMatch[3].trim();
+          rest = (splitMatch[4] || '').trim();
+        }
+
+        const titleHtml = titleText
+          ? `<div class="pub-title">${titleText}</div>`
+          : '';
+        const metaPieces = [];
+        if (authors) metaPieces.push(emphasizePrimaryAuthor(authors));
+        if (year) metaPieces.push(`(${year}).`);
+        if (rest) metaPieces.push(rest);
+        const metaHtml = (metaPieces.length)
+          ? `<div class="pub-meta">${metaPieces.join(' ')}</div>`
+          : `<div class="pub-meta">${emphasizePrimaryAuthor(citation)}</div>`;
+
+        const citationHtml = `${titleHtml}${metaHtml}`;
         const fullPaperBtn = url
           ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Paper</a>`
           : `<span class="btn btn-solid" aria-disabled="true">Full Paper</span>`;
@@ -163,13 +184,26 @@ async function populateSite() {
           ? `<a class="btn btn-outline" href="https://eos.org/research-spotlights/volcanoes-future-climate-effects-may-exceed-standard-estimates" target="_blank" rel="noopener noreferrer">Research Spotlight</a>`
           : '';
 
+        // Attempt to extract DOI for metrics widgets
+        let doi = '';
+        try {
+          const lower = String(url || '').toLowerCase();
+          const ix = lower.indexOf('doi.org/');
+          if (ix !== -1) {
+            doi = url.slice(ix + 'doi.org/'.length).replace(/[#?].*$/, '');
+          }
+        } catch {}
+        const metricsHtml = doi
+          ? `<div class="pub-metrics">\n               <span class="altmetric-embed" data-badge-type="donut" data-doi="${doi}"></span>\n               <span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_circle"></span>\n             </div>`
+          : '';
+
         const buttonsHtml = `
           <div class="pub-actions">
             ${firstBtn}
             ${spotlightBtn}
             ${fullPaperBtn}
           </div>`;
-        const html = isInPrep ? `${citationHtml}` : `${citationHtml}${buttonsHtml}`;
+        const html = isInPrep ? `${citationHtml}` : `${citationHtml}${metricsHtml}${buttonsHtml}`;
         return { times: label ? [label] : [], text: html };
       });
       renderTimeline(pubList, items);

@@ -219,6 +219,9 @@ html { scrollbar-gutter: stable both-edges; }
   gap: 8px;
   margin-top: 8px;
 }
+.pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
+.pub-meta { color: var(--muted); }
+.pub-metrics { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
 .btn {
   display: inline-flex;
   align-items: center;
