@@ -120,7 +120,7 @@ async function populateSite() {
 
     const pubList = document.getElementById('pub-list');
     if (pubList && Array.isArray(data.publications)) {
-      // Group by year; force "In preparation" to show on top and link only the title part
+      // Group by year; show action buttons beneath each citation
       const items = data.publications.map((p) => {
         const citation = typeof p === 'string' ? p : (p && p.title) ? p.title : '';
         const url = (p && p.url) ? p.url : '';
@@ -128,19 +128,17 @@ async function populateSite() {
         const yearMatch = citation.match(/\b(20\d{2}|19\d{2})\b/);
         const label = isInPrep ? 'In preparation' : (yearMatch ? yearMatch[1] : '');
 
-        let html = citation;
-        if (url) {
-          // Try to detect the paper title within the citation and link only that
-          let titleOnly = null;
-          let m = citation.match(/\(\d{4}\)\.\s+(.+?)\.(?:\s|$)/);
-          if (!m) {
-            m = citation.match(/\)\.\s+([^\.]+)\./);
-          }
-          if (m && m[1]) {
-            titleOnly = m[1];
-            html = citation.replace(titleOnly, `<a href="${url}" target="_blank" rel="noopener noreferrer">${titleOnly}</a>`);
-          }
-        }
+        const citationHtml = `<div class="pub-citation">${citation}</div>`;
+        const fullPaperBtn = url
+          ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Paper</a>`
+          : `<span class="btn btn-solid" aria-disabled="true">Full Paper</span>`;
+        const buttonsHtml = `
+          <div class="pub-actions">
+            <a class="btn btn-outline" href="#" aria-disabled="true">Press Release</a>
+            <a class="btn btn-outline" href="#" aria-disabled="true">Research Spotlight</a>
+            ${fullPaperBtn}
+          </div>`;
+        const html = `${citationHtml}${buttonsHtml}`;
         return { times: label ? [label] : [], text: html };
       });
       renderTimeline(pubList, items);
