@@ -211,10 +211,10 @@ async function populateSite() {
           } catch {}
         }
         const altmetricSpan = doi
-          ? `<span class="altmetric-embed" data-badge-type="donut" data-doi="${doi}" data-link-target="_blank"></span>`
-          : (url ? `<span class="altmetric-embed" data-badge-type="donut" data-url="${url}" data-link-target="_blank"></span>` : '');
+          ? `<span class="altmetric-embed" data-badge-type="bar" data-doi="${doi}" data-link-target="_blank"></span>`
+          : (url ? `<span class="altmetric-embed" data-badge-type="bar" data-url="${url}" data-link-target="_blank"></span>` : '');
         const dimensionsSpan = doi
-          ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_circle" data-legend="never"></span>`
+          ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_rectangle" data-legend="never"></span>`
           : '';
 
         const buttonsHtml = `
