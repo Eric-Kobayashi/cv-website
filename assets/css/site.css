@@ -86,7 +86,23 @@ html { scrollbar-gutter: stable both-edges; }
 }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-photo { width: 160px; height: 220px; transform: translateY(8px); }
+  .hero-photo { width: 160px; height: 220px; transform: none; margin: 0 auto; }
+}
+
+/* Small phones: make the hero photo responsive and avoid overlap with next section */
+@media (max-width: 640px) {
+  .hero { padding: 8px 0 16px; margin-top: 0; }
+  .hero-grid { gap: 16px; }
+  .hero-photo {
+    width: min(56vw, 220px);
+    max-width: 220px;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    transform: none;
+    margin: 0 auto;
+  }
+  .home-summary { margin-top: 0; }
 }
 
 .home-summary { margin-top: -86px; margin-bottom: 24px;}
