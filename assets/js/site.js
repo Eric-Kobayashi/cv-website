@@ -137,20 +137,28 @@ async function populateSite() {
       }
       // Group by year; show title-first layout, optional metrics, and action buttons
       const items = data.publications.map((p) => {
-        const citation = typeof p === 'string' ? p : (p && p.title) ? p.title : '';
+        const isStructured = p && typeof p === 'object' && (p.authors || p.venue || p.year);
+        const citation = !isStructured ? (typeof p === 'string' ? p : (p && p.title) ? p.title : '') : '';
         const url = (p && p.url) ? p.url : '';
-        const isInPrep = /in\s*preparation/i.test(citation);
-        const yearMatch = citation.match(/\b(20\d{2}|19\d{2})\b/);
+        const isInPrep = isStructured ? /in\s*preparation/i.test(String(p.year || '')) : /in\s*preparation/i.test(citation);
+        const yearMatch = isStructured ? String(p.year || '').match(/\b(20\d{2}|19\d{2})\b/) : citation.match(/\b(20\d{2}|19\d{2})\b/);
         const label = isInPrep ? 'In preparation' : (yearMatch ? yearMatch[1] : '');
 
         // Try to split into authors, year, title, and the remaining (journal/volume/etc.)
         let authors = '', year = '', titleText = '', rest = '';
-        const splitMatch = citation.match(/^(.+?)\((\d{4})\)\.\s+(.+?)\.?\s*(.*)$/);
-        if (splitMatch) {
-          authors = splitMatch[1].trim();
-          year = splitMatch[2].trim();
-          titleText = splitMatch[3].trim();
-          rest = (splitMatch[4] || '').trim();
+        if (isStructured) {
+          authors = p.authors || '';
+          year = p.year != null ? String(p.year) : '';
+          titleText = p.title || '';
+          rest = p.venue || '';
+        } else {
+          const splitMatch = citation.match(/^(.+?)\((\d{4})\)\.\s+(.+?)\.?\s*(.*)$/);
+          if (splitMatch) {
+            authors = splitMatch[1].trim();
+            year = splitMatch[2].trim();
+            titleText = splitMatch[3].trim();
+            rest = (splitMatch[4] || '').trim();
+          }
         }
 
         const titleHtml = titleText
@@ -166,11 +174,12 @@ async function populateSite() {
 
         const citationHtml = `${titleHtml}${metaHtml}`;
         const fullPaperBtn = url
-          ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Paper</a>`
-          : `<span class="btn btn-solid" aria-disabled="true">Full Paper</span>`;
-        const isCEECarbonBriefPaper = /Neglecting\s+future\s+sporadic\s+volcanic\s+eruptions\s+underestimates\s+climate\s+uncertainty/i.test(citation);
-        const isGRLPaper = /Climate\s+projections\s+very\s+likely\s+underestimate\s+future\s+volcanic\s+forcing/i.test(citation);
-        const isWasteToEnergyPaper = /Waste\s*[-‑–—]?to\s*[-‑–—]?Energy/i.test(citation);
+          ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Text</a>`
+          : `<span class="btn btn-solid" aria-disabled="true">Full Text</span>`;
+        const titleForChecks = titleText || citation;
+        const isCEECarbonBriefPaper = /Neglecting\s+future\s+sporadic\s+volcanic\s+eruptions\s+underestimates\s+climate\s+uncertainty/i.test(titleForChecks);
+        const isGRLPaper = /Climate\s+projections\s+very\s+likely\s+underestimate\s+future\s+volcanic\s+forcing/i.test(titleForChecks);
+        const isWasteToEnergyPaper = /Waste\s*[-‑–—]?to\s*[-‑–—]?Energy/i.test(titleForChecks);
 
         const firstBtn = isCEECarbonBriefPaper
           ? `<a class="btn btn-outline" href="https://www.carbonbrief.org/guest-post-investigating-how-volcanic-eruptions-can-affect-climate-projections/" target="_blank" rel="noopener noreferrer">Carbon Brief</a>`
@@ -186,13 +195,19 @@ async function populateSite() {
 
         // Attempt to extract DOI for metrics widgets
         let doi = '';
-        try {
-          const lower = String(url || '').toLowerCase();
-          const ix = lower.indexOf('doi.org/');
-          if (ix !== -1) {
-            doi = url.slice(ix + 'doi.org/'.length).replace(/[#?].*$/, '');
-          }
-        } catch {}
+        if (isStructured && p.doi) {
+          doi = String(p.doi);
+        } else {
+          try {
+            const lower = String(url || '').toLowerCase();
+            const ix = lower.indexOf('doi.org/');
+            if (ix !== -1) {
+              doi = url.slice(ix + 'doi.org/'.length).replace(/[#?].*$/, '');
+            } else if (/^10\.\d{4,9}\//.test(url)) {
+              doi = url; // URL itself is a DOI string
+            }
+          } catch {}
+        }
         const metricsHtml = doi
           ? `<div class="pub-metrics">\n               <span class="altmetric-embed" data-badge-type="donut" data-doi="${doi}"></span>\n               <span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_circle"></span>\n             </div>`
           : '';
