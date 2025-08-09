@@ -212,7 +212,7 @@ async function populateSite() {
         }
         const altmetricSpan = doi
           ? `<span class="altmetric-embed" data-badge-type="donut" data-doi="${doi}" data-hide-no-mentions="true"></span>`
-          : (url ? `<span class="altmetric-embed" data-badge-type="donut" data-url="${url}" data-hide-no-mentions="true"></span>` : '');
+          : '';
         const dimensionsSpan = doi
           ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_circle"></span>`
           : '';
