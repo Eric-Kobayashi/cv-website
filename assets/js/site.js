@@ -211,10 +211,10 @@ async function populateSite() {
           } catch {}
         }
         const altmetricSpan = doi
-          ? `<span class="altmetric-embed" data-badge-type="donut" data-doi="${doi}" data-link-target="_blank" data-hide-no-mentions="true"></span>`
-          : '';
+          ? `<span class="altmetric-embed" data-badge-type="donut" data-doi="${doi}" data-link-target="_blank"></span>`
+          : (url ? `<span class="altmetric-embed" data-badge-type="donut" data-url="${url}" data-link-target="_blank"></span>` : '');
         const dimensionsSpan = doi
-          ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_circle" data-legend="never" data-hide-zero-citations="true"></span>`
+          ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_circle" data-legend="never"></span>`
           : '';
 
         const buttonsHtml = `
@@ -228,6 +228,8 @@ async function populateSite() {
         return { times: label ? [label] : [], text: html };
       });
       renderTimeline(pubList, items);
+      try { if (window && typeof window._altmetric_embed_init === 'function') window._altmetric_embed_init(); } catch {}
+      try { if (window && window.__dimensions_embed && typeof window.__dimensions_embed.addBadges === 'function') window.__dimensions_embed.addBadges(); } catch {}
     }
 
     const projList = null;
