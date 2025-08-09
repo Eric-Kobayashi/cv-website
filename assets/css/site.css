@@ -232,3 +232,6 @@ html { scrollbar-gutter: stable both-edges; }
   pointer-events: none;
 }
 
+/* Emphasis for primary author in publications */
+.pub-author-me { font-weight: 700; }
+
