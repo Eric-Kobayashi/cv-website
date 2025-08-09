@@ -221,12 +221,12 @@ html { scrollbar-gutter: stable both-edges; }
 
 /* Publication action buttons */
 .pub-actions {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 6px;
+  gap: 2px;
+  margin-top: 4px;
 }
 .pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
 .pub-authors { color: var(--text); line-height: 1.5; }
@@ -236,11 +236,12 @@ html { scrollbar-gutter: stable both-edges; }
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-left: 4px;
+  margin-left: 6px;
   margin-top: 0;
-  height: var(--btn-height);
-  line-height: var(--btn-height);
+  height: var(--metrics-height);
+  line-height: var(--metrics-height);
   transform: none;
+  vertical-align: middle;
 }
 /* Make Altmetric bar look like compact rectangular badge without distortion */
 .pub-metrics-inline .altmetric-embed { display: inline-flex; align-items: center; height: var(--metrics-height); }
