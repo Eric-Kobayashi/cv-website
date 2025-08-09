@@ -74,7 +74,7 @@ html { scrollbar-gutter: stable both-edges; }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-photo { width: 160px; height: 220px; }
-  .home-summary { margin-top: 0; }
+  .home-summary { margin-top: 20px; }
 }
 
 .home-summary { padding: 8px 0 56px; margin-top: -20px; }

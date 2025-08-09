@@ -120,34 +120,16 @@ async function populateSite() {
 
     const pubList = document.getElementById('pub-list');
     if (pubList && Array.isArray(data.publications)) {
-      pubList.innerHTML = data.publications
-        .map((p) => {
-          if (typeof p === 'string') return `<li>${p}</li>`;
-          if (p && typeof p === 'object' && p.title) {
-            const citation = p.title;
-            const url = p.url;
-            if (url) {
-              // Try to detect the paper title within the citation and link only that
-              // Heuristic: after ") . " (year) comes the paper title sentence up to the next period
-              let titleOnly = null;
-              let m = citation.match(/\(\d{4}\)\.\s+(.+?)\.(?:\s|$)/);
-              if (!m) {
-                // Fallback heuristic: first sentence after "). "
-                m = citation.match(/\)\.\s+([^\.]+)\./);
-              }
-              if (m && m[1]) {
-                titleOnly = m[1];
-                const linked = citation.replace(titleOnly, `<a href="${url}" target="_blank" rel="noopener noreferrer">${titleOnly}</a>`);
-                return `<li>${linked}</li>`;
-              }
-              // Final fallback: link the whole citation
-              return `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${citation}</a></li>`;
-            }
-            return `<li>${citation}</li>`;
-          }
-          return '';
-        })
-        .join('');
+      // Reuse timeline UI: group by year extracted from citation
+      const items = data.publications.map((p) => {
+        const citation = typeof p === 'string' ? p : (p && p.title) ? p.title : '';
+        const url = (p && p.url) ? p.url : '';
+        const yearMatch = citation.match(/\b(20\d{2}|19\d{2})\b/);
+        const label = yearMatch ? yearMatch[1] : '';
+        const html = url ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${citation}</a>` : citation;
+        return { times: label ? [label] : [], text: html };
+      });
+      renderTimeline(pubList, items);
     }
 
     const projList = null;
