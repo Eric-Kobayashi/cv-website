@@ -40,6 +40,8 @@ async function populateSite() {
     const heroLinks = document.getElementById('hero-links');
     if (heroLinks) {
       const links = [];
+      // Croucher link moved here from summary
+      links.push(`<a href="https://croucher.org.hk/en/fellows-and-scholars/chim-man-mei" target="_blank" rel="noopener"><img src="assets/img/scholar.svg" alt="Croucher" class="icon" aria-hidden="true" />Croucher Fellow</a>`);
       if (data.email) {
         links.push(`<a href="mailto:${data.email}"><img src="assets/img/mail.svg" alt="Email" class="icon" aria-hidden="true" />${data.email}</a>`);
       }
