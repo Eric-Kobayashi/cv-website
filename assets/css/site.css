@@ -91,7 +91,7 @@ html { scrollbar-gutter: stable both-edges; }
 
 /* Small phones: make the hero photo responsive and avoid overlap with next section */
 @media (max-width: 640px) {
-  .hero { padding: 8px 0 16px; margin-top: 0; }
+  .hero { padding: 16px 0 28px; margin-top: 0; }
   .hero-grid { gap: 16px; }
   .hero h1 { font-size: 32px; }
   .hero-photo {
@@ -108,18 +108,17 @@ html { scrollbar-gutter: stable both-edges; }
 
 /* Responsive timeline adjustments */
 @media (max-width: 640px) {
-  .timeline > li {
-    grid-template-columns: 1fr;
-    padding-left: 40px; /* keep room for lollipop */
-    column-gap: 10px;
-    margin: 14px 0;
-  }
-  .timeline .time-list { margin-bottom: 6px; }
+  .timeline::before { left: 10px; }
+  .timeline > li { grid-template-columns: 1fr; padding-left: 28px; column-gap: 8px; margin: 12px 0; }
+  .timeline > li::before { left: 2px; }
+  .timeline .time-list { margin-bottom: 4px; }
   #pub-list .time-list,
   #pub-list .item-body { top: 0; }
-  .timeline .item-list li { margin: 10px 0; }
+  .timeline .item-list li { margin: 8px 0; }
   .pub-title { font-size: 15px; }
   .summary-text { font-size: 16px; }
+  .pub-actions { display: flex; gap: 4px; margin-top: 6px; }
+  .pub-actions .btn { height: 26px; font-size: 12px; padding: 0 10px; }
 }
 
 .home-summary { margin-top: -86px; margin-bottom: 24px;}
