@@ -210,10 +210,16 @@ async function populateSite() {
             }
           } catch {}
         }
-        // Force Altmetric to render as rectangular bar; align look with Dimensions
-        const altmetricSpan = doi
-          ? `<span class="altmetric-embed" data-badge-type="bar" data-badge-popover="right" data-link-target="_blank" data-doi="${doi}"></span>`
-          : (url ? `<span class="altmetric-embed" data-badge-type="bar" data-badge-popover="right" data-link-target="_blank" data-url="${url}"></span>` : '');
+        // Use static Altmetric "bar" image to force rectangular badge style
+        const altmetricDetailsUrl = doi
+          ? `https://www.altmetric.com/details.php?doi=${encodeURIComponent(doi)}`
+          : (url ? `https://www.altmetric.com/details.php?url=${encodeURIComponent(url)}` : '');
+        const altmetricImgSrc = doi
+          ? `https://badges.altmetric.com/?doi=${encodeURIComponent(doi)}&type=bar&lang=en`
+          : (url ? `https://badges.altmetric.com/?url=${encodeURIComponent(url)}&type=bar&lang=en` : '');
+        const altmetricSpan = altmetricImgSrc
+          ? `<a class="altmetric-link" href="${altmetricDetailsUrl}" target="_blank" rel="noopener noreferrer"><img class="altmetric-bar" src="${altmetricImgSrc}" alt="Altmetric score"/></a>`
+          : '';
         const dimensionsSpan = doi
           ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_rectangle" data-legend="never"></span>`
           : '';
