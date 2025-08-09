@@ -5,7 +5,7 @@
   --border: #e6e6e6;
   --accent: #0ea5a0; /* teal-ish; avoids purple per preference */
   --accent-ink: #0b3d3a;
-  --btn-height: 32px; /* target height for buttons and metric badges */
+  --btn-height: 24px; /* compact target height for buttons */
   --metrics-height: 19px; /* normalized height for Altmetric/Dimensions badges */
 }
 
@@ -225,8 +225,8 @@ html { scrollbar-gutter: stable both-edges; }
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 6px;
+  margin-top: 6px;
 }
 .pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
 .pub-authors { color: var(--text); line-height: 1.5; }
@@ -259,12 +259,14 @@ html { scrollbar-gutter: stable both-edges; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 12px;
-  border-radius: 10px;
+  height: var(--btn-height);
+  padding: 0 10px;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1;
   text-decoration: none;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   min-width: auto;
 }
 .btn-outline {
