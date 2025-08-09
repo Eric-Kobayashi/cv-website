@@ -148,13 +148,15 @@ async function populateSite() {
           ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Paper</a>`
           : `<span class="btn btn-solid" aria-disabled="true">Full Paper</span>`;
         const isCEECarbonBriefPaper = /Neglecting\s+future\s+sporadic\s+volcanic\s+eruptions\s+underestimates\s+climate\s+uncertainty/i.test(citation);
+        const isGRLPaper = /Climate\s+projections\s+very\s+likely\s+underestimate\s+future\s+volcanic\s+forcing/i.test(citation);
 
         const firstBtn = isCEECarbonBriefPaper
           ? `<a class="btn btn-outline" href="https://www.carbonbrief.org/guest-post-investigating-how-volcanic-eruptions-can-affect-climate-projections/" target="_blank" rel="noopener noreferrer">Carbon Brief</a>`
-          : `<a class="btn btn-outline" href="#" aria-disabled="true">Press Release</a>`;
+          : (isGRLPaper
+              ? `<a class="btn btn-outline" href="https://www.cam.ac.uk/research/news/effect-of-volcanic-eruptions-significantly-underestimated-in-climate-projections" target="_blank" rel="noopener noreferrer">Press Release</a>`
+              : '');
 
-        const isGRLSpotlightPaper = /Climate\s+projections\s+very\s+likely\s+underestimate\s+future\s+volcanic\s+forcing/i.test(citation);
-        const spotlightBtn = isGRLSpotlightPaper
+        const spotlightBtn = isGRLPaper
           ? `<a class="btn btn-outline" href="https://eos.org/research-spotlights/volcanoes-future-climate-effects-may-exceed-standard-estimates" target="_blank" rel="noopener noreferrer">Research Spotlight</a>`
           : '';
 
