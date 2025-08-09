@@ -427,8 +427,8 @@ window.populateSite = populateSite;
     const svgPath = 'assets/img/volcano.svg';
     // Generate standard PNG sizes and an Apple touch icon
     const targets = [
-      { size: 16, rel: 'icon', file: 'assets/img/favicon-16.png' },
-      { size: 32, rel: 'icon', file: 'assets/img/favicon-32.png' },
+      { size: 48, rel: 'icon', file: 'assets/img/favicon-48.png' },
+      { size: 96, rel: 'icon', file: 'assets/img/favicon-96.png' },
       { size: 180, rel: 'apple-touch-icon', file: 'assets/img/apple-touch-icon.png' },
     ];
     fetch(svgPath, { cache: 'force-cache' })
