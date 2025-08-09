@@ -6,7 +6,7 @@
   --accent: #0ea5a0; /* teal-ish; avoids purple per preference */
   --accent-ink: #0b3d3a;
   --btn-height: 32px; /* target height for buttons and metric badges */
-  --metrics-height: 24px; /* normalized height for Altmetric/Dimensions badges */
+  --metrics-height: 19px; /* normalized height for Altmetric/Dimensions badges */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -224,24 +224,27 @@ html { scrollbar-gutter: stable both-edges; }
 .pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
 .pub-meta { color: var(--muted); }
 .pub-metrics { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-.pub-metrics-inline { display: inline-flex; align-items: center; gap: 8px; margin-left: 8px; }
+.pub-metrics-inline { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; margin-top: 10px; }
 /* Make Altmetric bar look like compact rectangular badge without distortion */
 .pub-metrics-inline .altmetric-embed { display: inline-flex; align-items: center; height: var(--metrics-height); }
-.pub-metrics-inline .altmetric-bar { height: var(--metrics-height); width: auto; display: inline-block; }
+.pub-metrics-inline .altmetric-bar { height: var(--metrics-height); width: auto; display: inline-block; vertical-align: middle; }
 .pub-metrics-inline .__dimensions_Badge_Container,
 .pub-metrics-inline .__dimensions_badge_embed__ {
   height: var(--metrics-height) !important;
   display: inline-flex;
   align-items: center;
   overflow: hidden;
+  vertical-align: middle;
 }
-/* Scale Dimensions badge (default ~18px high) up to match button height */
+/* Scale Dimensions badge (default ~18px high) to match --metrics-height */
 .pub-metrics-inline .__dimensions_Badge_Container iframe,
 .pub-metrics-inline .__dimensions_Badge_Container svg,
 .pub-metrics-inline .__dimensions_Badge_Container img {
-  transform: scale(1.33); /* ~24/18 to match --metrics-height */
+  transform: scale(1.06); /* ~19/18 to match --metrics-height */
   transform-origin: left center;
 }
+/* Ensure any images inside metrics align visually */
+.pub-metrics-inline img { vertical-align: middle; }
 .btn {
   display: inline-flex;
   align-items: center;
