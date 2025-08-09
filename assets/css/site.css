@@ -222,6 +222,11 @@ html { scrollbar-gutter: stable both-edges; }
 .pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
 .pub-meta { color: var(--muted); }
 .pub-metrics { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.pub-metrics-inline { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; }
+/* Make badges very small */
+.pub-metrics-inline .altmetric-embed iframe,
+.pub-metrics-inline .__dimensions_Badge_Container, /* runtime container */
+.pub-metrics-inline .__dimensions_badge_embed__ { transform: scale(0.76); transform-origin: left center; }
 .btn {
   display: inline-flex;
   align-items: center;
