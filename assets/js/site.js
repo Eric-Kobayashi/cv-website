@@ -210,15 +210,9 @@ async function populateSite() {
             }
           } catch {}
         }
-        // Use static Altmetric "bar" image to force rectangular badge style
-        const altmetricDetailsUrl = doi
-          ? `https://www.altmetric.com/details.php?doi=${encodeURIComponent(doi)}`
-          : (url ? `https://www.altmetric.com/details.php?url=${encodeURIComponent(url)}` : '');
-        const altmetricImgSrc = doi
-          ? `https://badges.altmetric.com/?doi=${encodeURIComponent(doi)}&type=bar&lang=en`
-          : (url ? `https://badges.altmetric.com/?url=${encodeURIComponent(url)}&type=bar&lang=en` : '');
-        const altmetricSpan = altmetricImgSrc
-          ? `<a class="altmetric-link" href="${altmetricDetailsUrl}" target="_blank" rel="noopener noreferrer"><img class="altmetric-bar" src="${altmetricImgSrc}" alt="Altmetric score"/></a>`
+        // Placeholder for Altmetric rectangular bar image (we'll hydrate with API after render)
+        const altmetricSpan = (doi || url)
+          ? `<span class="altmetric-bar-wrap" ${doi ? `data-doi="${doi}"` : ''} ${url ? `data-url="${url}"` : ''}></span>`
           : '';
         const dimensionsSpan = doi
           ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_rectangle" data-legend="never"></span>`
@@ -235,7 +229,29 @@ async function populateSite() {
         return { times: label ? [label] : [], text: html };
       });
       renderTimeline(pubList, items);
-      try { if (window && typeof window._altmetric_embed_init === 'function') window._altmetric_embed_init(); } catch {}
+      // Hydrate Altmetric bar images using public API to get score
+      try {
+        const wraps = document.querySelectorAll('.altmetric-bar-wrap');
+        wraps.forEach(async (wrap) => {
+          const doiAttr = wrap.getAttribute('data-doi');
+          const urlAttr = wrap.getAttribute('data-url');
+          const apiUrl = doiAttr
+            ? `https://api.altmetric.com/v1/doi/${encodeURIComponent(doiAttr)}`
+            : (urlAttr ? `https://api.altmetric.com/v1/url/${encodeURIComponent(urlAttr)}` : null);
+          if (!apiUrl) return;
+          try {
+            const res = await fetch(apiUrl, { mode: 'cors' });
+            if (!res.ok) return;
+            const data = await res.json();
+            const score = Math.max(0, Math.round(Number(data && data.score ? data.score : 0)));
+            const detailsUrl = (data && data.details_url)
+              ? data.details_url
+              : (doiAttr ? `https://www.altmetric.com/details.php?doi=${encodeURIComponent(doiAttr)}` : `https://www.altmetric.com/details.php?url=${encodeURIComponent(urlAttr || '')}`);
+            const imgSrc = `https://d1uo4w7k31k5mn.cloudfront.net/v2_hq/${score}.png`;
+            wrap.innerHTML = `<a class="altmetric-link" href="${detailsUrl}" target="_blank" rel="noopener noreferrer"><img class="altmetric-bar" src="${imgSrc}" alt="Altmetric score ${score}" width="88" height="18"/></a>`;
+          } catch {}
+        });
+      } catch {}
       try { if (window && window.__dimensions_embed && typeof window.__dimensions_embed.addBadges === 'function') window.__dimensions_embed.addBadges(); } catch {}
     }
 
