@@ -41,17 +41,17 @@
     },
     {
       "kicker": "Link",
+      "title": "News Outlet: Volcanoes’ Future Climate Effects May Exceed Standard Estimates",
+      "source": "PreventionWeb",
+      "url": "https://www.preventionweb.net/news/volcanoes-future-climate-effects-may-exceed-standard-estimates",
+      "image": "assets/img/featured-5-preventionweb.jpg"
+    },    
+    {
+      "kicker": "Link",
       "title": "Press release: Rummaging through trash to find clean energy",
       "source": "UNEP",
       "url": "https://www.unep.org/news-and-stories/story/rummaging-through-trash-find-clean-energy",
       "image": "assets/img/featured-4-unep.jpg"
-    },
-    {
-      "kicker": "Link",
-      "title": "PreventionWeb — Volcanoes’ Future Climate Effects May Exceed Standard Estimates",
-      "source": "PreventionWeb",
-      "url": "https://www.preventionweb.net/news/volcanoes-future-climate-effects-may-exceed-standard-estimates",
-      "image": "assets/img/featured-5-preventionweb.jpg"
     }
   ],
   "publications": [

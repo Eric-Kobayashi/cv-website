@@ -74,9 +74,10 @@ html { scrollbar-gutter: stable both-edges; }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-photo { width: 160px; height: 220px; }
+  .home-summary { margin-top: 0; }
 }
 
-.home-summary { padding: 12px 0 56px; }
+.home-summary { padding: 8px 0 56px; margin-top: -20px; }
 .summary-inner { display: grid; gap: 54px; justify-items: start; }
 .summary-text { max-width: 63ch; color: var(--muted); font-size: 18px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
