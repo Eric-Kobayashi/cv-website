@@ -153,7 +153,7 @@ async function populateSite() {
             <a class="btn btn-outline" href="#" aria-disabled="true">Research Spotlight</a>
             ${fullPaperBtn}
           </div>`;
-        const html = `${citationHtml}${buttonsHtml}`;
+        const html = isInPrep ? `${citationHtml}` : `${citationHtml}${buttonsHtml}`;
         return { times: label ? [label] : [], text: html };
       });
       renderTimeline(pubList, items);
