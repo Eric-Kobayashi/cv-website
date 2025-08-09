@@ -36,17 +36,19 @@ async function populateSite() {
     const taglineEl = document.getElementById('hero-tagline');
     if (taglineEl && data.tagline) taglineEl.innerHTML = data.tagline;
 
-    // Hero links (email + LinkedIn)
+    // Hero links (email + LinkedIn + Exeter + Croucher + Scholar)
     const heroLinks = document.getElementById('hero-links');
     if (heroLinks) {
       const links = [];
-      // Croucher link moved here from summary
-      links.push(`<a href="https://croucher.org.hk/en/fellows-and-scholars/chim-man-mei" target="_blank" rel="noopener"><img src="assets/img/scholar.svg" alt="Croucher" class="icon" aria-hidden="true" />Croucher Fellow</a>`);
       if (data.email) {
         links.push(`<a href="mailto:${data.email}"><img src="assets/img/mail.svg" alt="Email" class="icon" aria-hidden="true" />${data.email}</a>`);
       }
       // LinkedIn handle hardcoded for now per previous contact list
       links.push(`<a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="LinkedIn" class="icon" aria-hidden="true" />LinkedIn</a>`);
+      // University of Exeter expert profile
+      links.push(`<a href="https://experts.exeter.ac.uk/45271-may-chim/about" target="_blank" rel="noopener">University of Exeter</a>`);
+      // Croucher Fellow profile
+      links.push(`<a href="https://croucher.org.hk/en/fellows-and-scholars/chim-man-mei" target="_blank" rel="noopener">Croucher Fellow</a>`);
       // Google Scholar profile link
       links.push(`<a href="https://scholar.google.com/citations?user=zXMtGdkAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener"><img src="assets/img/scholar.svg" alt="Google Scholar" class="icon" aria-hidden="true" />Google Scholar</a>`);
       heroLinks.innerHTML = links.join('');
@@ -102,7 +104,10 @@ async function populateSite() {
       homeEdu.innerHTML = `<h2>Education</h2><ul class="edu-list">${eduHtml}</ul>`;
     }
 
-    // about section not used
+    const aboutEl = document.getElementById('about-content');
+    if (aboutEl && data.about) {
+      aboutEl.innerHTML = `<p>${data.about}</p>`;
+    }
     const aboutExtra = document.getElementById('about-extra');
     if (aboutExtra) {
       const edu = Array.isArray(data.education) ? data.education : [];
