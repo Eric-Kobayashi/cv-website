@@ -382,3 +382,54 @@ window.populateSite = populateSite;
 
 (async function () { await populateSite(); })();
 
+// Ensure mobile browsers (esp. iOS Safari) get a PNG favicon/apple-touch-icon
+// by rasterizing the SVG icon at runtime. Some mobile browsers ignore SVG favicons.
+(function ensurePngFavicons() {
+  try {
+    const head = document.head || document.getElementsByTagName('head')[0];
+    const svgPath = 'assets/img/volcano.svg';
+    // Generate standard PNG sizes and an Apple touch icon
+    const targets = [
+      { size: 16, rel: 'icon', file: 'assets/img/favicon-16.png' },
+      { size: 32, rel: 'icon', file: 'assets/img/favicon-32.png' },
+      { size: 180, rel: 'apple-touch-icon', file: 'assets/img/apple-touch-icon.png' },
+    ];
+    fetch(svgPath, { cache: 'force-cache' })
+      .then((res) => (res.ok ? res.text() : null))
+      .then((svgText) => {
+        if (!svgText) return;
+        const blob = new Blob([svgText], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        const img = new Image();
+        img.onload = () => {
+          try {
+            targets.forEach(({ size, rel, file }) => {
+              const canvas = document.createElement('canvas');
+              canvas.width = size;
+              canvas.height = size;
+              const ctx = canvas.getContext('2d');
+              if (rel === 'apple-touch-icon') {
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, size, size);
+              }
+              ctx.drawImage(img, 0, 0, size, size);
+              const pngUrl = canvas.toDataURL('image/png');
+              const link = document.createElement('link');
+              link.rel = rel;
+              link.sizes = `${size}x${size}`;
+              link.href = pngUrl;
+              head.appendChild(link);
+              // Try to write to known file paths for static references (no-op on GitHub Pages)
+              try { if (file) { /* placeholder; static hosting won't allow writing */ } } catch {}
+            });
+          } finally {
+            URL.revokeObjectURL(url);
+          }
+        };
+        img.onerror = () => URL.revokeObjectURL(url);
+        img.src = url;
+      })
+      .catch(() => {});
+  } catch {}
+})();
+
