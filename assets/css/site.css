@@ -121,6 +121,12 @@ html { scrollbar-gutter: stable both-edges; }
   .pub-actions .btn { height: 26px; font-size: 12px; padding: 0 10px; }
 }
 
+/* Ensure pub-list offsets are reset on small screens */
+@media (max-width: 640px) {
+  #pub-list .time-list,
+  #pub-list .item-body { top: 0 !important; }
+}
+
 .home-summary { margin-top: -86px; margin-bottom: 24px;}
 .summary-inner { display: grid; gap: 24px; justify-items: start; }
 .summary-text { max-width: 70ch; color: var(--muted); font-size: 18px; text-align: justify; }
@@ -336,3 +342,15 @@ html { scrollbar-gutter: stable both-edges; }
 /* Emphasis for primary author in publications */
 .pub-author-me { font-weight: 700; }
 
+/* Final mobile overrides (placed at end to ensure they win specificity/order) */
+@media (max-width: 640px) {
+  .hero { padding: 18px 0 34px; }
+  .hero-photo { transform: none !important; margin: 6px auto 0 !important; }
+  .home-summary { margin-top: 0 !important; }
+
+  .timeline::before { left: 10px; }
+  .timeline > li { grid-template-columns: 1fr !important; padding-left: 32px !important; column-gap: 8px !important; margin: 12px 0; }
+  .timeline > li::before { left: 2px; }
+  .timeline .time-list { margin-bottom: 6px; }
+  .timeline .item-list li { margin: 10px 0; }
+}
