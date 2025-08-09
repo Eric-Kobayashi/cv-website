@@ -153,10 +153,15 @@ async function populateSite() {
           ? `<a class="btn btn-outline" href="https://www.carbonbrief.org/guest-post-investigating-how-volcanic-eruptions-can-affect-climate-projections/" target="_blank" rel="noopener noreferrer">Carbon Brief</a>`
           : `<a class="btn btn-outline" href="#" aria-disabled="true">Press Release</a>`;
 
+        const isGRLSpotlightPaper = /Climate\s+projections\s+very\s+likely\s+underestimate\s+future\s+volcanic\s+forcing/i.test(citation);
+        const spotlightBtn = isGRLSpotlightPaper
+          ? `<a class="btn btn-outline" href="https://eos.org/research-spotlights/volcanoes-future-climate-effects-may-exceed-standard-estimates" target="_blank" rel="noopener noreferrer">Research Spotlight</a>`
+          : '';
+
         const buttonsHtml = `
           <div class="pub-actions">
             ${firstBtn}
-            <a class="btn btn-outline" href="#" aria-disabled="true">Research Spotlight</a>
+            ${spotlightBtn}
             ${fullPaperBtn}
           </div>`;
         const html = isInPrep ? `${citationHtml}` : `${citationHtml}${buttonsHtml}`;
