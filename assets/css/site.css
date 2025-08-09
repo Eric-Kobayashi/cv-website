@@ -226,7 +226,7 @@ html { scrollbar-gutter: stable both-edges; }
 .pub-metrics-inline { display: inline-flex; align-items: center; gap: 10px; margin-left: 8px; }
 /* Make Altmetric bar look like compact rectangular badge without distortion */
 .pub-metrics-inline .altmetric-embed { display: inline-flex; align-items: center; height: var(--btn-height); }
-.pub-metrics-inline .altmetric-embed iframe { height: auto !important; width: auto !important; transform: scale(0.88); transform-origin: left center; }
+.pub-metrics-inline .altmetric-bar { height: var(--btn-height); width: auto; display: inline-block; }
 .pub-metrics-inline .__dimensions_Badge_Container,
 .pub-metrics-inline .__dimensions_badge_embed__ { height: var(--btn-height) !important; transform: none !important; display: inline-flex; align-items: center; }
 .pub-metrics-inline .__dimensions_Badge_Container svg,
