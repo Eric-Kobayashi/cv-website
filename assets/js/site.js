@@ -45,6 +45,8 @@ async function populateSite() {
       }
       // LinkedIn handle hardcoded for now per previous contact list
       links.push(`<a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="LinkedIn" class="icon" aria-hidden="true" />LinkedIn</a>`);
+      // Google Scholar profile link
+      links.push(`<a href="https://scholar.google.com/citations?user=zXMtGdkAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener"><img src="assets/img/scholar.svg" alt="Google Scholar" class="icon" aria-hidden="true" />Google Scholar</a>`);
       heroLinks.innerHTML = links.join('');
     }
 
