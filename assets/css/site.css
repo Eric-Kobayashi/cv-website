@@ -69,11 +69,11 @@ html { scrollbar-gutter: stable both-edges; }
 .button { display: inline-block; padding: 10px 14px; border-radius: 10px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; }
 .button-outline { background: transparent; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--bg)); }
 .hero-photo-wrap { display: grid; place-items: center; }
-.hero-photo { width: 200px; height: 200px; border-radius: 20px; object-fit: cover; display: block; }
+.hero-photo { width: 220px; height: 280px; border-radius: 16px; object-fit: cover; display: block; }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-photo { width: 140px; height: 140px; }
+  .hero-photo { width: 160px; height: 220px; }
 }
 
 .home-summary { padding: 12px 0 56px; }
