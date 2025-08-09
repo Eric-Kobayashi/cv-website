@@ -236,10 +236,10 @@ html { scrollbar-gutter: stable both-edges; }
 .pub-metrics { display: flex; align-items: center; gap: 8px; margin-top: 0; }
 .pub-metrics-inline {
   display: inline-flex;
-  align-items: center;
+  align-items: top;
   gap: 4px;
-  margin-left: 10px;
-  margin-top: 0;
+  margin-left: 20px;
+  margin-top: -10px;
   height: var(--metrics-height);
   line-height: var(--metrics-height);
   transform: none;
