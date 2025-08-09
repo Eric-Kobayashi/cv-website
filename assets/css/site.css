@@ -74,21 +74,28 @@ html { scrollbar-gutter: stable both-edges; }
 .button { display: inline-block; padding: 10px 14px; border-radius: 10px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; }
 .button-outline { background: transparent; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--bg)); }
 .hero-photo-wrap { display: grid; place-items: center; }
-.hero-photo { width: 220px; height: 280px; border-radius: 16px; object-fit: cover; display: block; transform: translateY(86px); }
-
+.hero-photo {
+  width: 220px;
+  height: 280px;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+  transform: translateY(86px);
+  margin-left: auto;
+  margin-right: 10px;
+}
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-photo { width: 160px; height: 220px; transform: translateY(8px); }
-  .home-summary { margin-top: 20px; }
 }
 
-.home-summary { padding: 8px 0 56px; margin-top: -76px; }
-.summary-inner { display: grid; gap: 54px; justify-items: start; }
-.summary-text { max-width: 58ch; color: var(--muted); font-size: 18px; }
+.home-summary { margin-top: -86px; margin-bottom: 24px;}
+.summary-inner { display: grid; gap: 24px; justify-items: start; }
+.summary-text { max-width: 70ch; color: var(--muted); font-size: 18px; text-align: justify; }
 .summary-text a, .prose a, .timeline a, #hero-tagline a {
   text-decoration: none;
 }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;}
 .chips .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); background: color-mix(in srgb, var(--bg) 88%, transparent); }
 /* Education list styling */
 .edu-list { list-style: none; padding-left: 0; display: grid; gap: 8px; margin: 6px 0 0; }
@@ -222,6 +229,7 @@ html { scrollbar-gutter: stable both-edges; }
   margin-top: 8px;
 }
 .pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
+.pub-authors { color: var(--text); line-height: 1.5; }
 .pub-meta { color: var(--muted); }
 .pub-metrics { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
 .pub-metrics-inline { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; margin-top: 0px; }

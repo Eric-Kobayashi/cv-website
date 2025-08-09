@@ -164,15 +164,19 @@ async function populateSite() {
         const titleHtml = titleText
           ? `<div class="pub-title">${titleText}</div>`
           : '';
-        const metaPieces = [];
-        if (authors) metaPieces.push(emphasizePrimaryAuthor(authors));
-        if (year) metaPieces.push(`(${year}).`);
-        if (rest) metaPieces.push(rest);
-        const metaHtml = (metaPieces.length)
-          ? `<div class="pub-meta">${metaPieces.join(' ')}</div>`
-          : `<div class="pub-meta">${emphasizePrimaryAuthor(citation)}</div>`;
+        // Separate authors on their own line; everything else on the next line
+        const authorsHtml = authors
+          ? `<div class="pub-authors">${emphasizePrimaryAuthor(authors)}</div>`
+          : '';
+        const detailsPieces = [];
+        if (year) detailsPieces.push(`(${year}).`);
+        if (rest) detailsPieces.push(rest);
+        // If we couldn't split structured parts, fall back to showing the full citation on one line
+        const detailsHtml = (detailsPieces.length)
+          ? `<div class="pub-meta">${detailsPieces.join(' ')}</div>`
+          : (authorsHtml ? '' : `<div class="pub-meta">${emphasizePrimaryAuthor(citation)}</div>`);
 
-        const citationHtml = `${titleHtml}${metaHtml}`;
+        const citationHtml = `${titleHtml}${authorsHtml}${detailsHtml}`;
         const fullPaperBtn = url
           ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Text</a>`
           : `<span class="btn btn-solid" aria-disabled="true">Full Text</span>`;
