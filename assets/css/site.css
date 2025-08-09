@@ -225,21 +225,22 @@ html { scrollbar-gutter: stable both-edges; }
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1px;
+  gap: 2px; /* small positive gap to avoid overlap issues on hover */
   margin-top: 4px;
 }
-/* Make button spacing ultra-tight (slight overlap) */
-.pub-actions .btn + .btn { margin-left: -3px; }
+/* Ensure hovered button stays on top if elements get tight */
+.pub-actions .btn { position: relative; z-index: 0; }
+.pub-actions .btn:hover { z-index: 2; }
 .pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
 .pub-authors { color: var(--text); line-height: 1.5; }
 .pub-meta { color: var(--muted); position: relative; top: 1px; }
 .pub-metrics { display: flex; align-items: center; gap: 8px; margin-top: 0; }
 .pub-metrics-inline {
   display: inline-flex;
-  align-items: top;
+  align-items: center; /* valid value; 'top' is invalid */
   gap: 4px;
   margin-left: 20px;
-  margin-top: -5px;
+  margin-top: -2px; /* subtle nudge without breaking layout */
   height: var(--metrics-height);
   line-height: var(--metrics-height);
   transform: none;
