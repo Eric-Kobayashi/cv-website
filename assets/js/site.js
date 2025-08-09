@@ -210,9 +210,10 @@ async function populateSite() {
             }
           } catch {}
         }
+        // Force Altmetric to render as rectangular bar; align look with Dimensions
         const altmetricSpan = doi
-          ? `<span class="altmetric-embed" data-badge-type="bar" data-doi="${doi}" data-link-target="_blank"></span>`
-          : (url ? `<span class="altmetric-embed" data-badge-type="bar" data-url="${url}" data-link-target="_blank"></span>` : '');
+          ? `<span class="altmetric-embed" data-badge-type="bar" data-hide-no-mentions="true" data-link-target="_blank" data-doi="${doi}"></span>`
+          : (url ? `<span class="altmetric-embed" data-badge-type="bar" data-hide-no-mentions="true" data-link-target="_blank" data-url="${url}"></span>` : '');
         const dimensionsSpan = doi
           ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_rectangle" data-legend="never"></span>`
           : '';
