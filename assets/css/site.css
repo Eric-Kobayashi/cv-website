@@ -49,6 +49,10 @@ html { scrollbar-gutter: stable both-edges; }
 .nav { margin-left: auto; display: flex; gap: 18px; }
 .nav a { color: var(--muted); text-decoration: none; }
 .nav a[aria-current="page"], .nav a:hover { color: var(--text); }
+.hero a, .home-featured a, .content a {
+  color: #e2f4f4;
+  text-decoration: none;
+}
 .nav-toggle { display: none; margin-left: auto; font-size: 20px; background: none; border: 0; color: var(--text); }
 
 @media (max-width: 740px) {
@@ -80,6 +84,10 @@ html { scrollbar-gutter: stable both-edges; }
 .home-summary { padding: 8px 0 56px; margin-top: -76px; }
 .summary-inner { display: grid; gap: 54px; justify-items: start; }
 .summary-text { max-width: 58ch; color: var(--muted); font-size: 18px; }
+.summary-text a, .prose a, .timeline a, #hero-tagline a {
+  color: #e2f4f4;
+  text-decoration: none;
+}
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); background: color-mix(in srgb, var(--bg) 88%, transparent); }
 /* Education list styling */
