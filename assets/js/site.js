@@ -170,14 +170,30 @@ async function populateSite() {
         const authorsHtml = authors
           ? `<div class="pub-authors">${emphasizePrimaryAuthor(authors)}</div>`
           : '';
-        const detailsPieces = [];
-        // Place journal/venue first, then the year in parentheses (only if numeric year)
+        // Build details with italic journal name, then year in parentheses, then comma + volume/pages
         const numericYear = year && /^\d{4}$/.test(String(year));
-        if (rest) detailsPieces.push(rest);
-        if (numericYear) detailsPieces.push(`(${year}).`);
+        function splitVenue(venueStr) {
+          const s = String(venueStr || '').trim();
+          if (!s) return { journal: '', suffix: '' };
+          const m = s.match(/^(.+?)\s+(\d.*)$/); // split before the first number-run
+          if (m) {
+            return { journal: m[1].trim(), suffix: (m[2] || '').trim() };
+          }
+          return { journal: s, suffix: '' };
+        }
+        let detailsText = '';
+        if (rest) {
+          const { journal, suffix } = splitVenue(rest);
+          const journalHtml = journal ? `<em class="pub-journal">${journal}</em>` : '';
+          const yearHtml = numericYear ? ` (${year})` : '';
+          const suffixHtml = suffix ? `, ${suffix}` : '';
+          detailsText = `${journalHtml}${yearHtml}${suffixHtml}`.trim();
+        } else if (numericYear) {
+          detailsText = `(${year})`;
+        }
         // If we couldn't split structured parts, fall back to showing the full citation on one line
-        const detailsHtml = (detailsPieces.length)
-          ? `<div class="pub-meta">${detailsPieces.join(' ')}</div>`
+        const detailsHtml = detailsText
+          ? `<div class="pub-meta">${detailsText}</div>`
           : (authorsHtml ? '' : `<div class="pub-meta">${emphasizePrimaryAuthor(citation)}</div>`);
 
         const citationHtml = `${titleHtml}${authorsHtml}${detailsHtml}`;
