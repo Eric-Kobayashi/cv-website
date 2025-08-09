@@ -120,6 +120,21 @@ async function populateSite() {
 
     const pubList = document.getElementById('pub-list');
     if (pubList && Array.isArray(data.publications)) {
+      // Emphasize the primary author "M. M. Chim" in various common formats
+      function emphasizePrimaryAuthor(rawCitation) {
+        if (!rawCitation) return '';
+        let emphasized = String(rawCitation);
+        const patterns = [
+          /\bChim,\s*M\.?\s*M\.?\b/g, // "Chim, M. M."
+          /\bM\.?\s*M\.?\s*Chim\b/g,   // "M. M. Chim"
+          /\bChim,\s*M\.M\.\b/g,       // "Chim, M.M."
+          /\bM\.M\.\s*Chim\b/g          // "M.M. Chim"
+        ];
+        for (const rx of patterns) {
+          emphasized = emphasized.replace(rx, (m) => `<strong class="pub-author-me">${m}</strong>`);
+        }
+        return emphasized;
+      }
       // Group by year; show action buttons beneath each citation
       const items = data.publications.map((p) => {
         const citation = typeof p === 'string' ? p : (p && p.title) ? p.title : '';
@@ -128,7 +143,7 @@ async function populateSite() {
         const yearMatch = citation.match(/\b(20\d{2}|19\d{2})\b/);
         const label = isInPrep ? 'In preparation' : (yearMatch ? yearMatch[1] : '');
 
-        const citationHtml = `<div class="pub-citation">${citation}</div>`;
+        const citationHtml = `<div class="pub-citation">${emphasizePrimaryAuthor(citation)}</div>`;
         const fullPaperBtn = url
           ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Paper</a>`
           : `<span class="btn btn-solid" aria-disabled="true">Full Paper</span>`;
