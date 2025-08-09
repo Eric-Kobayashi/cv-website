@@ -171,8 +171,10 @@ async function populateSite() {
           ? `<div class="pub-authors">${emphasizePrimaryAuthor(authors)}</div>`
           : '';
         const detailsPieces = [];
-        if (year) detailsPieces.push(`(${year}).`);
+        // Place journal/venue first, then the year in parentheses (only if numeric year)
+        const numericYear = year && /^\d{4}$/.test(String(year));
         if (rest) detailsPieces.push(rest);
+        if (numericYear) detailsPieces.push(`(${year}).`);
         // If we couldn't split structured parts, fall back to showing the full citation on one line
         const detailsHtml = (detailsPieces.length)
           ? `<div class="pub-meta">${detailsPieces.join(' ')}</div>`
