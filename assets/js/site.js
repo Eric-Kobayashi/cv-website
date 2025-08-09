@@ -431,7 +431,7 @@ window.populateSite = populateSite;
       { size: 96, rel: 'icon', file: 'assets/img/favicon-96.png' },
       { size: 180, rel: 'apple-touch-icon', file: 'assets/img/apple-touch-icon.png' },
     ];
-    fetch(svgPath, { cache: 'force-cache' })
+    fetch(svgPath, { cache: 'no-cache' })
       .then((res) => (res.ok ? res.text() : null))
       .then((svgText) => {
         if (!svgText) return;
@@ -451,6 +451,8 @@ window.populateSite = populateSite;
               }
               ctx.drawImage(img, 0, 0, size, size);
               const pngUrl = canvas.toDataURL('image/png');
+              // Remove existing icon links of this rel/size to avoid duplicates
+              head.querySelectorAll(`link[rel='${rel}'][sizes='${size}x${size}']`).forEach((n) => n.remove());
               const link = document.createElement('link');
               link.rel = rel;
               link.sizes = `${size}x${size}`;

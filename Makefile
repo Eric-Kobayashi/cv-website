@@ -7,6 +7,9 @@ extract:
 bake:
 	python3 scripts/build_site_data_js.py
 
+favicons:
+	uv run python3 scripts/build_favicons.py
+
 feature-images:
 	python3 scripts/fetch_feature_images.py && make bake
 
