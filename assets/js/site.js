@@ -295,6 +295,11 @@ async function populateSite() {
 
     function renderTimeline(listEl, items) {
       if (!listEl || !Array.isArray(items)) return;
+      const isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+      if (isMobile) {
+        renderTimelineMobile(listEl, items);
+        return;
+      }
       const groups = new Map();
       for (const item of items) {
         if (typeof item === 'string') {
@@ -334,6 +339,38 @@ async function populateSite() {
         html.push(`<li class="group"><div class="time-list">${timeHtml}</div><div class="item-body">${listHtml}</div></li>`);
       }
       listEl.innerHTML = html.join('');
+    }
+
+    function renderTimelineMobile(listEl, items) {
+      const flat = [];
+      for (const item of items) {
+        if (typeof item === 'string') {
+          flat.push({ label: '', text: item });
+          continue;
+        }
+        const times = Array.isArray(item.times) ? item.times : (item.time ? [item.time] : []);
+        const text = item.text || '';
+        if (!times.length) {
+          flat.push({ label: '', text });
+        } else {
+          for (const t of times) flat.push({ label: t, text });
+        }
+      }
+      function sortValue(label) {
+        if (!label) return -Infinity;
+        if (/in\s*prepar/i.test(label)) return 10000;
+        if (/present/i.test(label)) return 9999;
+        const nums = Array.from(String(label).matchAll(/\b(\d{4})\b/g)).map((m) => parseInt(m[1], 10));
+        if (!nums.length) return -Infinity;
+        return Math.max(...nums);
+      }
+      flat.sort((a, b) => sortValue(String(b.label)) - sortValue(String(a.label)));
+      const html = flat.map(({ label, text }) => {
+        const timeHtml = label ? `<span class=\"time\">${label}</span>` : '';
+        return `<li class=\"mobile-item\">${timeHtml}<div class=\"mobile-item-body\">${text}</div></li>`;
+      }).join('');
+      listEl.classList.add('timeline-mobile');
+      listEl.innerHTML = html;
     }
 
     // projects page removed

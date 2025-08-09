@@ -256,6 +256,14 @@ html { scrollbar-gutter: stable both-edges; }
   box-shadow: 0 3px 10px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
+/* Mobile flat timeline */
+@media (max-width: 640px) {
+  .timeline-mobile { position: relative; padding-left: 0; }
+  .timeline-mobile::before { display: none; }
+  .timeline-mobile > .mobile-item { list-style: none; margin: 10px 0; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: color-mix(in srgb, var(--bg) 96%, transparent); }
+  .timeline-mobile > .mobile-item .time { display: inline-block; margin: 0 8px 6px 0; }
+  .timeline-mobile > .mobile-item .mobile-item-body { display: block; }
+}
 
 /* Publication action buttons */
 .pub-actions {
