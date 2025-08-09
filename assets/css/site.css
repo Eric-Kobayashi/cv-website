@@ -282,6 +282,10 @@ html { scrollbar-gutter: stable both-edges; }
   border: 1px solid transparent;
   min-width: auto;
 }
+.btn:hover, .btn:focus-visible {
+  filter: brightness(0.95);
+  opacity: 1 !important;
+}
 .btn-outline {
   color: #0B63CE;
   border-color: #0B63CE;
