@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="lava" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff5a36"/>
+      <stop offset="100%" stop-color="#ff9800"/>
+    </linearGradient>
+  </defs>
+  <!-- background -->
+  <rect width="64" height="64" rx="8" ry="8" fill="#ffffff"/>
+  <!-- mountain base -->
+  <path d="M8 50 L24 28 L32 34 L40 24 L56 50 Z" fill="#3b4a5a"/>
+  <!-- snow/ash cap -->
+  <path d="M24 28 L28 24 L32 26 L36 20 L40 24 L32 34 Z" fill="#dfe7ef"/>
+  <!-- lava stream -->
+  <path d="M31 26 C30 30, 30 36, 29 40 C28 44, 30 48, 32 50 C34 48, 36 44, 35 40 C34 36, 34 30, 35 26 Z" fill="url(#lava)"/>
+  <!-- smoke -->
+  <g fill="#c7d2dc" opacity="0.9">
+    <circle cx="36" cy="14" r="4"/>
+    <circle cx="30" cy="12" r="3"/>
+    <circle cx="40" cy="10" r="3"/>
+  </g>
+</svg>
