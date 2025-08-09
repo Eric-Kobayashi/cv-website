@@ -1,7 +1,7 @@
 {
   "name": "May Chim",
   "email": "m.m.chim@exeter.ac.uk",
-  "tagline": "Croucher Postdoctoral Research Fellow, <a href=\"https://experts.exeter.ac.uk/45271-may-chim/about\" target=\"_blank\" rel=\"noopener\">University of Exeter</a>",
+  "tagline": "<a href=\"https://croucher.org.hk/en/fellows-and-scholars/chim-man-mei\">Croucher Postdoctoral Research Fellow</a>, <a href=\"https://experts.exeter.ac.uk/45271-may-chim/about\" target=\"_blank\" rel=\"noopener\">University of Exeter</a>",
   "summary": "I am a Croucher Postdoctoral Research Fellow at the Department of Mathematics and Statistics at the University of Exeter. My main research interests lie at the nexus of climate change and volcanic aerosols. I study how climate and volcanoes interact using climate models, ice core records, satellite data and statistical analysis.",
   "about": "I am a Croucher Postdoctoral Research Fellow at the University of Exeter working at the interface of volcanology, climate dynamics, and atmospheric chemistry. During my PhD in Chemistry at the University of Cambridge, I developed <a href=\"https://meetingorganizer.copernicus.org/EGU22/EGU22-2749.html\">UKESM‑VPLUME</a> — a framework coupling a one‑dimensional volcanic plume model with the UK Earth System Model — and conducted more than 5000 model‑years of simulations. My work shows that (i) climate projection studies very likely underestimate future volcanic forcing and its climate effects, (ii) future volcanic forcing can contribute up to ~49% of climate uncertainty, and (iii) future eruptions may delay Antarctic ozone hole recovery. Previously, during my MPhil at CUHK, I studied the role of water in heterogeneous oxidation of atmospheric organic aerosols.",
   "photo": "assets/img/profile.jpg",
@@ -45,6 +45,13 @@
       "source": "UNEP",
       "url": "https://www.unep.org/news-and-stories/story/rummaging-through-trash-find-clean-energy",
       "image": "assets/img/featured-4-unep.jpg"
+    },
+    {
+      "kicker": "Link",
+      "title": "PreventionWeb — Volcanoes’ Future Climate Effects May Exceed Standard Estimates",
+      "source": "PreventionWeb",
+      "url": "https://www.preventionweb.net/news/volcanoes-future-climate-effects-may-exceed-standard-estimates",
+      "image": ""
     }
   ],
   "publications": [
