@@ -191,16 +191,6 @@ async function populateSite() {
         } else if (numericYear) {
           detailsText = `(${year})`;
         }
-        // Inline metrics (Altmetric + Dimensions) appended at end of details line
-        const metricsInline = (altmetricSpan || dimensionsSpan)
-          ? `<span class="pub-metrics-inline">${altmetricSpan}${dimensionsSpan}</span>`
-          : '';
-        // If we couldn't split structured parts, fall back to showing the full citation on one line
-        const detailsHtml = detailsText
-          ? `<div class="pub-meta">${detailsText}${metricsInline}</div>`
-          : (authorsHtml ? (metricsInline ? `<div class="pub-meta">${metricsInline}</div>` : '') : `<div class="pub-meta">${emphasizePrimaryAuthor(citation)}${metricsInline}</div>`);
-
-        const citationHtml = `${titleHtml}${authorsHtml}${detailsHtml}`;
         const fullPaperBtn = url
           ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Text</a>`
           : `<span class="btn btn-solid" aria-disabled="true">Full Text</span>`;
@@ -245,6 +235,17 @@ async function populateSite() {
         const dimensionsSpan = doi
           ? `<span class="__dimensions_badge_embed__" data-doi="${doi}" data-style="small_rectangle" data-legend="never"></span>`
           : '';
+
+        // Inline metrics (Altmetric + Dimensions) appended at end of details line
+        const metricsInline = (altmetricSpan || dimensionsSpan)
+          ? `<span class="pub-metrics-inline">${altmetricSpan}${dimensionsSpan}</span>`
+          : '';
+        // If we couldn't split structured parts, fall back to showing the full citation on one line
+        const detailsHtml = detailsText
+          ? `<div class="pub-meta">${detailsText}${metricsInline}</div>`
+          : (authorsHtml ? (metricsInline ? `<div class="pub-meta">${metricsInline}</div>` : '') : `<div class="pub-meta">${emphasizePrimaryAuthor(citation)}${metricsInline}</div>`);
+
+        const citationHtml = `${titleHtml}${authorsHtml}${detailsHtml}`;
 
         const buttonsHtml = `
           <div class="pub-actions">
