@@ -253,7 +253,7 @@ html { scrollbar-gutter: stable both-edges; }
   overflow: hidden;
   vertical-align: middle;
   position: relative;
-  top: 0;
+  top: 1px;
 }
 /* Scale Dimensions badge (default ~18px high) to match --metrics-height */
 .pub-metrics-inline .__dimensions_Badge_Container iframe,
