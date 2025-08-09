@@ -15,16 +15,46 @@ OG_IMAGE_RE = re.compile(
 
 
 def fetch_text(url: str, *, timeout: float = 20.0) -> str:
-    req = Request(url, headers={
-        "User-Agent": (
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15"
-        )
-    })
-    with urlopen(req, timeout=timeout) as resp:  # nosec - simple fetch, trusted URLs provided by user
-        data = resp.read()
-        charset = resp.headers.get_content_charset() or "utf-8"
-    return data.decode(charset, errors="replace")
+    header_variants = [
+        {
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15"
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+        },
+        {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+        },
+    ]
+    last_exc: Exception | None = None
+    for headers in header_variants:
+        try:
+            req = Request(url, headers=headers)
+            with urlopen(req, timeout=timeout) as resp:  # nosec - simple fetch, trusted URLs provided by user
+                data = resp.read()
+                charset = resp.headers.get_content_charset() or "utf-8"
+            return data.decode(charset, errors="replace")
+        except Exception as exc:  # pragma: no cover - fallback
+            last_exc = exc
+            continue
+    # Try r.jina.ai mirror as a last resort to read HTML (not images)
+    try:
+        mirror = f"https://r.jina.ai/http://{urlparse(url).netloc}{urlparse(url).path}"
+        req = Request(mirror, headers={"User-Agent": "Mozilla/5.0"})
+        with urlopen(req, timeout=timeout) as resp:
+            data = resp.read()
+            return data.decode("utf-8", errors="replace")
+    except Exception:
+        pass
+    if last_exc:
+        raise last_exc
 
 
 def fetch_bytes(url: str, *, timeout: float = 30.0) -> tuple[bytes, Optional[str]]:
@@ -87,15 +117,20 @@ def main() -> int:
             img_url = extract_image_url(url, html)
             if not img_url:
                 continue
-            blob, ctype = fetch_bytes(img_url)
-            base = sanitize_name(item.get("source") or urlparse(url).netloc)
-            ext = guess_ext(img_url, ctype)
-            out_name = f"featured-{idx}-{base}{ext}"
-            out_path = img_dir / out_name
-            out_path.write_bytes(blob)
-            # store site-relative path
-            item["image"] = f"assets/img/{out_name}"
-            print(f"Saved {out_path} from {img_url}")
+            try:
+                blob, ctype = fetch_bytes(img_url)
+                base = sanitize_name(item.get("source") or urlparse(url).netloc)
+                ext = guess_ext(img_url, ctype)
+                out_name = f"featured-{idx}-{base}{ext}"
+                out_path = img_dir / out_name
+                out_path.write_bytes(blob)
+                # store site-relative path
+                item["image"] = f"assets/img/{out_name}"
+                print(f"Saved {out_path} from {img_url}")
+            except Exception as img_exc:
+                # Fallback: reference remote image directly
+                item["image"] = img_url
+                print(f"WARN: using remote image for {url}: {img_exc}")
         except Exception as exc:  # pragma: no cover - best effort
             print(f"WARN: failed to fetch image for {url}: {exc}")
 
