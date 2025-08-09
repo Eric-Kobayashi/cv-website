@@ -77,7 +77,7 @@ html { scrollbar-gutter: stable both-edges; }
   .home-summary { margin-top: 20px; }
 }
 
-.home-summary { padding: 8px 0 56px; margin-top: -20px; }
+.home-summary { padding: 8px 0 56px; margin-top: -36px; }
 .summary-inner { display: grid; gap: 54px; justify-items: start; }
 .summary-text { max-width: 63ch; color: var(--muted); font-size: 18px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
