@@ -62,7 +62,7 @@ html { scrollbar-gutter: stable both-edges; }
   .nav-toggle { display: inline-flex; }
 }
 
-.hero { padding: 0 0 24px; margin-top: -16px; }
+.hero { padding: 0 0 24px; margin-top: 0; }
 .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: center; }
 .hero h1 { font-size: 44px; line-height: 1.1; margin: 0 0 8px; }
 .hero-links { display: flex; gap: 12px; align-items: center; margin: 6px 0 10px; flex-wrap: wrap; }
@@ -80,13 +80,14 @@ html { scrollbar-gutter: stable both-edges; }
   border-radius: 16px;
   object-fit: cover;
   display: block;
-  transform: translateY(86px);
+  /* Replace transform-based offset with real margin for robust layout */
+  margin-top: 86px;
   margin-left: auto;
   margin-right: 10px;
 }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-photo { width: 160px; height: 220px; transform: none; margin: 0 auto; }
+  .hero-photo { width: 160px; height: 220px; transform: none; margin: 0 auto; margin-top: 0; }
 }
 
 /* Small phones: make the hero photo responsive and avoid overlap with next section */
@@ -127,7 +128,7 @@ html { scrollbar-gutter: stable both-edges; }
   #pub-list .item-body { top: 0 !important; }
 }
 
-.home-summary { margin-top: -86px; margin-bottom: 24px;}
+.home-summary { margin-top: 0; margin-bottom: 24px;}
 .summary-inner { display: grid; gap: 24px; justify-items: start; }
 .summary-text { max-width: 70ch; color: var(--muted); font-size: 18px; text-align: justify; }
 .summary-text a, .prose a, .timeline a, #hero-tagline a {
