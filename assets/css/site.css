@@ -236,9 +236,11 @@ html { scrollbar-gutter: stable both-edges; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-left: 8px;
-  margin-top: 0px;
-  transform: translateY(-2px);
+  margin-left: 6px;
+  margin-top: 0;
+  height: var(--btn-height);
+  line-height: var(--btn-height);
+  transform: none;
 }
 /* Make Altmetric bar look like compact rectangular badge without distortion */
 .pub-metrics-inline .altmetric-embed { display: inline-flex; align-items: center; height: var(--metrics-height); }
@@ -251,7 +253,7 @@ html { scrollbar-gutter: stable both-edges; }
   overflow: hidden;
   vertical-align: middle;
   position: relative;
-  top: 2px; /* nudge down for perfect alignment */
+  top: 0;
 }
 /* Scale Dimensions badge (default ~18px high) to match --metrics-height */
 .pub-metrics-inline .__dimensions_Badge_Container iframe,
