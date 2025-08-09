@@ -147,9 +147,15 @@ async function populateSite() {
         const fullPaperBtn = url
           ? `<a class="btn btn-solid" href="${url}" target="_blank" rel="noopener noreferrer">Full Paper</a>`
           : `<span class="btn btn-solid" aria-disabled="true">Full Paper</span>`;
+        const isCEECarbonBriefPaper = /Neglecting\s+future\s+sporadic\s+volcanic\s+eruptions\s+underestimates\s+climate\s+uncertainty/i.test(citation);
+
+        const firstBtn = isCEECarbonBriefPaper
+          ? `<a class="btn btn-outline" href="https://www.carbonbrief.org/guest-post-investigating-how-volcanic-eruptions-can-affect-climate-projections/" target="_blank" rel="noopener noreferrer">Carbon Brief</a>`
+          : `<a class="btn btn-outline" href="#" aria-disabled="true">Press Release</a>`;
+
         const buttonsHtml = `
           <div class="pub-actions">
-            <a class="btn btn-outline" href="#" aria-disabled="true">Press Release</a>
+            ${firstBtn}
             <a class="btn btn-outline" href="#" aria-disabled="true">Research Spotlight</a>
             ${fullPaperBtn}
           </div>`;
