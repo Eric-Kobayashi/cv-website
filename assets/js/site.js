@@ -102,10 +102,7 @@ async function populateSite() {
       homeEdu.innerHTML = `<h2>Education</h2><ul class="edu-list">${eduHtml}</ul>`;
     }
 
-    const aboutEl = document.getElementById('about-content');
-    if (aboutEl && data.about) {
-      aboutEl.innerHTML = `<p>${data.about}</p>`;
-    }
+    // about section not used
     const aboutExtra = document.getElementById('about-extra');
     if (aboutExtra) {
       const edu = Array.isArray(data.education) ? data.education : [];
