@@ -200,7 +200,7 @@ html { scrollbar-gutter: stable both-edges; }
 #pub-list .time-list,
 #pub-list .item-body {
   position: relative;
-  top: -4px;
+  top: -10px;
 }
 #projects-list .item-list { list-style: none; }
 .timeline > li:hover .time {
@@ -223,8 +223,8 @@ html { scrollbar-gutter: stable both-edges; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 6px 12px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 13px;
   text-decoration: none;
