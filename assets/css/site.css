@@ -50,7 +50,6 @@ html { scrollbar-gutter: stable both-edges; }
 .nav a { color: var(--muted); text-decoration: none; }
 .nav a[aria-current="page"], .nav a:hover { color: var(--text); }
 .hero a, .home-featured a, .content a {
-  color: #e2f4f4;
   text-decoration: none;
 }
 .nav-toggle { display: none; margin-left: auto; font-size: 20px; background: none; border: 0; color: var(--text); }
@@ -85,7 +84,6 @@ html { scrollbar-gutter: stable both-edges; }
 .summary-inner { display: grid; gap: 54px; justify-items: start; }
 .summary-text { max-width: 58ch; color: var(--muted); font-size: 18px; }
 .summary-text a, .prose a, .timeline a, #hero-tagline a {
-  color: #e2f4f4;
   text-decoration: none;
 }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -197,6 +195,13 @@ html { scrollbar-gutter: stable both-edges; }
 .timeline .item-list { margin: 0; padding-left: 0; }
 .timeline .item-list li { margin: 6px 0; }
 #pub-list .item-list li { margin: 16px 0; }
+
+/* Nudge publications' year labels and lists up to align with lollipops */
+#pub-list .time-list,
+#pub-list .item-body {
+  position: relative;
+  top: -4px;
+}
 #projects-list .item-list { list-style: none; }
 .timeline > li:hover .time {
   transform: translateY(-1px);
