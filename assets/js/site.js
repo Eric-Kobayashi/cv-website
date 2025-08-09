@@ -47,6 +47,8 @@ async function populateSite() {
       links.push(`<a href="https://www.linkedin.com/in/mmchim/" target="_blank" rel="noopener"><img src="assets/img/linkedin.svg" alt="LinkedIn" class="icon" aria-hidden="true" />LinkedIn</a>`);
       // Google Scholar profile link
       links.push(`<a href="https://scholar.google.com/citations?user=zXMtGdkAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener"><img src="assets/img/scholar.svg" alt="Google Scholar" class="icon" aria-hidden="true" />Google Scholar</a>`);
+        // GitHub profile link
+        links.push(`<a href="https://github.com/maychim" target="_blank" rel="noopener"><img src="assets/img/github.svg" alt="GitHub" class="icon" aria-hidden="true" />GitHub</a>`);
       heroLinks.innerHTML = links.join('');
     }
 
