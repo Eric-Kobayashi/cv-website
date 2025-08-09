@@ -6,6 +6,7 @@
   --accent: #0ea5a0; /* teal-ish; avoids purple per preference */
   --accent-ink: #0b3d3a;
   --btn-height: 32px; /* target height for buttons and metric badges */
+  --metrics-height: 24px; /* normalized height for Altmetric/Dimensions badges */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -225,11 +226,11 @@ html { scrollbar-gutter: stable both-edges; }
 .pub-metrics { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
 .pub-metrics-inline { display: inline-flex; align-items: center; gap: 8px; margin-left: 8px; }
 /* Make Altmetric bar look like compact rectangular badge without distortion */
-.pub-metrics-inline .altmetric-embed { display: inline-flex; align-items: center; height: var(--btn-height); }
-.pub-metrics-inline .altmetric-bar { height: var(--btn-height); width: auto; display: inline-block; }
+.pub-metrics-inline .altmetric-embed { display: inline-flex; align-items: center; height: var(--metrics-height); }
+.pub-metrics-inline .altmetric-bar { height: var(--metrics-height); width: auto; display: inline-block; }
 .pub-metrics-inline .__dimensions_Badge_Container,
 .pub-metrics-inline .__dimensions_badge_embed__ {
-  height: var(--btn-height) !important;
+  height: var(--metrics-height) !important;
   display: inline-flex;
   align-items: center;
   overflow: hidden;
@@ -238,7 +239,7 @@ html { scrollbar-gutter: stable both-edges; }
 .pub-metrics-inline .__dimensions_Badge_Container iframe,
 .pub-metrics-inline .__dimensions_Badge_Container svg,
 .pub-metrics-inline .__dimensions_Badge_Container img {
-  transform: scale(1.78); /* ~32/18 */
+  transform: scale(1.33); /* ~24/18 to match --metrics-height */
   transform-origin: left center;
 }
 .btn {
