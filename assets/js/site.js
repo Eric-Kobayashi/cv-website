@@ -34,7 +34,7 @@ async function populateSite() {
     nameEls.forEach((el) => (el.textContent = data.name || ''));
 
     const taglineEl = document.getElementById('hero-tagline');
-    if (taglineEl && data.tagline) taglineEl.textContent = data.tagline;
+    if (taglineEl && data.tagline) taglineEl.innerHTML = data.tagline;
 
     // Hero links (email + LinkedIn)
     const heroLinks = document.getElementById('hero-links');
