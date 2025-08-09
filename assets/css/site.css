@@ -223,9 +223,10 @@ html { scrollbar-gutter: stable both-edges; }
 .pub-title { font-weight: 700; line-height: 1.35; margin-bottom: 2px; }
 .pub-meta { color: var(--muted); }
 .pub-metrics { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-.pub-metrics-inline { display: inline-flex; align-items: center; gap: 8px; margin-left: 8px; }
-/* Make badges match button height */
-.pub-metrics-inline .altmetric-embed iframe { height: var(--btn-height) !important; width: auto !important; transform: none !important; }
+.pub-metrics-inline { display: inline-flex; align-items: center; gap: 10px; margin-left: 8px; }
+/* Make Altmetric bar look like compact rectangular badge without distortion */
+.pub-metrics-inline .altmetric-embed { display: inline-flex; align-items: center; height: var(--btn-height); }
+.pub-metrics-inline .altmetric-embed iframe { height: auto !important; width: auto !important; transform: scale(0.88); transform-origin: left center; }
 .pub-metrics-inline .__dimensions_Badge_Container,
 .pub-metrics-inline .__dimensions_badge_embed__ { height: var(--btn-height) !important; transform: none !important; display: inline-flex; align-items: center; }
 .pub-metrics-inline .__dimensions_Badge_Container svg,
