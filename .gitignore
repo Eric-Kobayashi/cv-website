@@ -23,4 +23,5 @@ build/
 
 # Local artifacts
 cv_raw.txt
+*.pdf
 
